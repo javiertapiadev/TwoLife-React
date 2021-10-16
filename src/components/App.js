@@ -1,9 +1,10 @@
 import React from 'react';
+import RequestList from './RequestList';
 
 const App = () => {
   return (
     <div>
-      Two Lifes
+      <RequestList/>      
     </div>
   );
 };
