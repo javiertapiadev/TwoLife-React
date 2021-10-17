@@ -4,8 +4,6 @@ import AdCard from './AdCard';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
 
-//import CardGroup from 'react-bootstrap/CardGroup'
-
 class Ads extends Component {
     state= {
         data: [
@@ -54,7 +52,6 @@ class Ads extends Component {
         ]   
     }
 
-    //CARD GRID
     render() {
         return (
             <Container className="bg-primary" style={{ width: '90%' }}>
@@ -66,20 +63,6 @@ class Ads extends Component {
             </Container>
         );
     }
-
-    
-
-    //CARD GROUP
-    /*render() {
-        return (
-            <CardGroup>
-            {this.state.data.map(data => (
-              <AdCard gameData={data} key={data.id}/>
-            ))}
-            </CardGroup>
-        );
-    }*/
-
 }
 
 export default Ads;
