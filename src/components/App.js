@@ -1,6 +1,9 @@
 import React from 'react';
-import AdCard from './AdCard';
+
 import Ads from './Ads';
+//import AdCard from './AdCard';
+
+import '../css/AdCard.css';
 
 const App = () => {
   return (

@@ -1,5 +1,11 @@
 import { Component } from 'react';
 import AdCard from './AdCard';
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row'
+
+//import CardGroup from 'react-bootstrap/CardGroup'
+
 class Ads extends Component {
     state= {
         data: [
@@ -48,13 +54,31 @@ class Ads extends Component {
         ]   
     }
 
+    //CARD GRID
     render() {
         return (
-            this.state.data.map(data => (
+            <Container className="bg-primary" style={{ width: '90%' }}>
+            <Row xs="auto" md="auto" lg="auto" className="g-5">
+            {this.state.data.map(data => (
               <AdCard gameData={data} key={data.id}/>
-            ))
+            ))}
+            </Row>
+            </Container>
         );
-      }
+    }
+
+    
+
+    //CARD GROUP
+    /*render() {
+        return (
+            <CardGroup>
+            {this.state.data.map(data => (
+              <AdCard gameData={data} key={data.id}/>
+            ))}
+            </CardGroup>
+        );
+    }*/
 
 }
 
