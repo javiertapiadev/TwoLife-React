@@ -7,8 +7,8 @@ function RequestFilter({filters}){
     <div className='header'>
       <h1>Filtar por</h1>
     </div>
+
     <div className='body'>
-      
       <div key='default-checkbox' className="mb-3">
         <Form.Check 
           type='checkbox'
@@ -23,6 +23,7 @@ function RequestFilter({filters}){
           label='Anuncio'
         />
       </div>
+
       <div key='default-checkbox' className="mb-3 d-flex flex-column">
         <Form.Check 
             type='checkbox'
@@ -36,6 +37,7 @@ function RequestFilter({filters}){
           <Form.Control type="date" placeholder="Enter email" />
         </Form.Group>
       </div>
+
       <div key='default-checkbox' className="mb-3">
         <Form.Check 
             type='checkbox'

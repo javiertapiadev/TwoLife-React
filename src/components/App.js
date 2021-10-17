@@ -4,8 +4,7 @@ import RequestPage from './RequestPage'
 const App = () => {
   return (
     <div>
-      Two Lifes
-      <RequestPage/>
+      {/* <RequestPage/> */}
     </div>
   );
 };
