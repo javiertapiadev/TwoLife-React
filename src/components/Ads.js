@@ -54,7 +54,7 @@ class Ads extends Component {
 
     render() {
         return (
-            <Container className="bg-primary" style={{ width: '90%' }}>
+            <Container className = "mb-5" /*"bg-primary"*/ style={{ width: '90%' }}>
             <Row xs="auto" md="auto" lg="auto" className="g-5">
             {this.state.data.map(data => (
               <AdCard gameData={data} key={data.id}/>

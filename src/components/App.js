@@ -1,17 +1,15 @@
 import React from 'react';
 
+import Header from './Header';
 import Ads from './Ads';
 //import AdCard from './AdCard';
 
-import '../css/AdCard.css';
+import '../css/AdsStyle.css';
 
 const App = () => {
   return (
     <React.Fragment>
-    <div>
-      TwoLifes - Anuncios actuales
-      {/*<AdCard/>*/}
-    </div>
+    <Header/>
     <Ads/>
     </React.Fragment>
   );

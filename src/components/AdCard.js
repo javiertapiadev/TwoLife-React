@@ -10,13 +10,16 @@ const AdCard = ({gameData})=>{
       <Col>
           <Card style={{ width: '12rem' }} className= "h-100">
           <Card.Img variant="top" src={gameData.img} /*style={{height: '100%'}}*//>
-          <Card.Body >
+          <Card.Body /*className= "h-100"*/>
             <Card.Title>{gameData.name}</Card.Title>
             <Card.Text>
               ${gameData.price}
             </Card.Text>
-            <Button variant="primary">Más Información</Button>
+            {/*<Button variant="primary">Más Información</Button>*/}
           </Card.Body>
+          <Card.Footer>
+            <Button variant="primary">Más Información</Button>
+          </Card.Footer>
         </Card>
       </Col>
 
