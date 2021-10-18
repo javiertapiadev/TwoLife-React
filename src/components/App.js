@@ -1,12 +1,25 @@
 import React from 'react';
+import { BrowserRouter as Router} from 'react-router-dom';
+import { NavBar } from './NavBar'
+import { Portada } from './Portada'
+import Footer from './Footer';
+import Latests from './Latests';
+import Populars from './Populars';
 import RequestPage from './RequestPage'
 
-const App = () => {
+function App() {
   return (
-    <div>
-      {/* <RequestPage/> */}
-    </div>
+    <>
+      <Router>
+      <NavBar/>
+      <Portada/>
+      </Router>
+      <Populars />
+      <Latests />
+      <Footer />
+    /* <RequestPage/> */
+    </>
   );
-};
+}
 
 export default App;
