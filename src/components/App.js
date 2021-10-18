@@ -1,10 +1,17 @@
 import React from 'react';
+import Footer from './Footer';
+import Latests from './Latests';
+import Background from './Background';
+import Populars from './Populars';
 
 const App = () => {
   return (
-    <div>
-      Two Lifes
-    </div>
+    <>
+      <Background />
+      <Populars />
+      <Latests />
+      <Footer />
+    </>
   );
 };
 
