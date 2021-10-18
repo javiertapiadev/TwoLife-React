@@ -1,10 +1,17 @@
 import React from 'react';
 
+import Header from './Header';
+import Ads from './Ads';
+//import AdCard from './AdCard';
+
+import '../css/AdsStyle.css';
+
 const App = () => {
   return (
-    <div>
-      Two Lifes
-    </div>
+    <React.Fragment>
+    <Header/>
+    <Ads/>
+    </React.Fragment>
   );
 };
 
