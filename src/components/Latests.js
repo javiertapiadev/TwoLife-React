@@ -5,7 +5,7 @@ import '../css/videogames.css';
 function Latests(){
     return (
         <>
-        <Container>
+        <Container style={{ marginTop: "10vh"}}>
             <Row className="videogames">
                 <Col>
                     <Card style={{ width: '18rem' }}>

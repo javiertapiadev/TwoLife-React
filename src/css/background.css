@@ -2,10 +2,6 @@
     margin-bottom: 10vh;
 }
 
-#imgContainer {
-    position: relative;
-}
-
 .center {
     display: flex;
     justify-content: center;
