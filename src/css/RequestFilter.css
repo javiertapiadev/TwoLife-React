@@ -1,0 +1,17 @@
+.filters{
+  /* display:flex-start; */
+  min-width:100%;
+  height: 100vh;
+  background-color: lightblue;
+  /* flex-direction: column; */
+}
+
+.header{
+  display:flex;
+  justify-content: center;
+}
+
+.body{
+  display:flex;
+  flex-direction:column;
+}
