@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import AdCard from './AdCard';
+import { NavBar } from './NavBar'
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
 
 class Ads extends Component {
-    state= {
+    state = {
         data: [
             {
                 "id": 1,
@@ -49,18 +50,21 @@ class Ads extends Component {
                 "price": "1074",
                 "platform": "PS4"
             }
-        ]   
+        ]
     }
 
     render() {
         return (
-            <Container className = "mb-5" /*"bg-primary"*/ style={{ width: '90%' }}>
-            <Row xs="auto" md="auto" lg="auto" className="g-5">
-            {this.state.data.map(data => (
-              <AdCard gameData={data} key={data.id}/>
-            ))}
-            </Row>
-            </Container>
+            <>
+                <NavBar />
+                <Container className="mb-5" /*"bg-primary"*/ style={{ width: '90%' }}>
+                    <Row xs="auto" md="auto" lg="auto" className="g-5">
+                        {this.state.data.map(data => (
+                            <AdCard gameData={data} key={data.id} />
+                        ))}
+                    </Row>
+                </Container>
+            </>
         );
     }
 }

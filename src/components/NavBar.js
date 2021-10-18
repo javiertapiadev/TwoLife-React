@@ -1,5 +1,14 @@
 import React from 'react';
-import { Col, Row, Button, Navbar, Nav, Container, NavDropdown, FormControl, InputGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+import {
+  Col, Row, Button,
+  Navbar, Nav, Container,
+  NavDropdown, FormControl,
+  InputGroup
+} from 'react-bootstrap';
+import Dropdown from 'react-bootstrap/Dropdown'
+
 import logo from '../images/logo.png';
 
 export const NavBar = () => {
@@ -7,7 +16,23 @@ export const NavBar = () => {
     <Container fluid>
       <Col>
         <Row>
-          <Col sm={2}>Logueado como: <a href="#login">Admin</a></Col>
+          <Col sm={2}>
+            <Dropdown>
+              <Dropdown.Toggle id="dropdown-basic">
+                Logueado como: <a style={{color: "white"}} href="#login">Admin</a>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item>
+                  <Link to="/myrequests">Mis solicitudes</Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link to="/myads">Mis anuncios</Link>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            
+          </Col>
           <Col sm={5}>
             <InputGroup className="mb-3">
               <Button variant="outline-secondary" id="button-addon1">
@@ -25,16 +50,16 @@ export const NavBar = () => {
             <Button variant="outline-danger" size="lg">Vender</Button>
           </Col>
           <Col>
-          <Navbar.Brand href="#home">
-                    <img
-                      alt=""
-                      src={logo}
-                      width="50"
-                      height="50"
-                      className="d-inline-block align-center"
-                    />{' '}
-                    Two Life
-                  </Navbar.Brand>
+            <Navbar.Brand href="/">
+              <img
+                alt=""
+                src={logo}
+                width="50"
+                height="50"
+                className="d-inline-block align-center"
+              />{' '}
+              Two Life
+            </Navbar.Brand>
           </Col>
         </Row>
         <Row>
