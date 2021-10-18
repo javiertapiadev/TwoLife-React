@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col, Row, Button, Navbar, Nav, Container, NavDropdown, Form, FormControl, InputGroup, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
-import { link } from 'react-router-dom'
+import { Col, Row, Button, Navbar, Nav, Container, NavDropdown, FormControl, InputGroup } from 'react-bootstrap';
+import logo from '../images/logo.png';
 
 export const NavBar = () => {
   return (
@@ -28,7 +28,7 @@ export const NavBar = () => {
           <Navbar.Brand href="#home">
                     <img
                       alt=""
-                      src="./logo.png"
+                      src={logo}
                       width="50"
                       height="50"
                       className="d-inline-block align-center"

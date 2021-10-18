@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
 import { NavBar } from './NavBar'
 import { Portada } from './Portada'
-import 'bootstrap/dist/css/bootstrap.css'
 import Footer from './Footer';
 import Latests from './Latests';
 import Populars from './Populars';
