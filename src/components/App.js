@@ -5,7 +5,6 @@ import { Portada } from './Portada'
 import Footer from './Footer';
 import Latests from './Latests';
 import Populars from './Populars';
-import RequestPage from './RequestPage'
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
       <Populars />
       <Latests />
       <Footer />
-    /* <RequestPage/> */
     </>
   );
 }
