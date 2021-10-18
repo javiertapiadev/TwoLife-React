@@ -1,0 +1,41 @@
+.container{
+    background-image: "https://4kwallpapers.com/images/walls/thumbs_3t/473.png";
+}
+
+.container img{
+    width: 200%;
+    height: 200%
+}
+
+#button-comprar{
+    position: absolute;
+    top: 75%;
+    left: 35%;
+    transform: rotate(25deg);
+    width: 150px;
+    height: 70px;
+    transform: translate(-30%, 20%);
+    background-color: red;
+    color: black;
+    border:none;
+    cursor:pointer;
+    border-radius: 5px;
+    text-align: center
+}
+
+#button-vender{
+    position: absolute;
+    top: 65%;
+    left: 70%;
+    transform: rotate(25deg);
+    width: 150px;
+    height: 70px;
+    transform: translate(-30%, 20%);
+    background-color: green;
+    color: black;
+    border:none;
+    cursor:pointer;
+    border-radius: 5px;
+    text-align: center
+}
+
