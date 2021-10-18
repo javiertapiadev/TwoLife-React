@@ -1,0 +1,9 @@
+.card {
+    padding: 20px;
+}
+
+.body {
+    display: flex;
+    max-width: 100%;
+    justify-content: space-around;
+}
