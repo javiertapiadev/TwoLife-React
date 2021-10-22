@@ -1,0 +1,5 @@
+.videogames {
+    display: grid;
+    row-gap: 5vh;
+    margin-bottom: 10vh;
+}

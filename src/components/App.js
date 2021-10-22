@@ -1,18 +1,22 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Header from './Header';
+import Home from './Home';
+import RequestPage from './RequestPage';
 import Ads from './Ads';
-//import AdCard from './AdCard';
 
-import '../css/AdsStyle.css';
-
-const App = () => {
+function App() {
   return (
-    <React.Fragment>
-    <Header/>
-    <Ads/>
-    </React.Fragment>
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/myrequests" component={RequestPage} />
+          <Route exact path="/myads" component={Ads} />
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </Router>
+    </>
   );
-};
+}
 
 export default App;
