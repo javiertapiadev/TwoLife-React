@@ -1,12 +1,22 @@
 import React from 'react';
-import RequestPage from './RequestPage'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-const App = () => {
+import Home from './Home';
+import RequestPage from './RequestPage';
+import Ads from './Ads';
+
+function App() {
   return (
-    <div>
-      {/* <RequestPage/> */}
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/myrequests" component={RequestPage} />
+          <Route exact path="/myads" component={Ads} />
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </Router>
+    </>
   );
-};
+}
 
 export default App;

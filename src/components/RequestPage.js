@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
+import { NavBar } from './NavBar'
 import RequestFilter from "./RequestFilter";
 import RequestList from "./RequestList";
 
@@ -32,19 +33,29 @@ class RequestPage extends React.Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row className='requests-header'>
-          <h1>Mis solicitudes</h1>
-        </Row>
-        <Row>
-          <Col md={3} lg={6}>
-            <RequestFilter />
-          </Col>
-          <Col md={9} lg={6}>
-            <RequestList list={this.state.requests}/>
-          </Col>
-        </Row>
-      </Container>
+      <>
+        <NavBar />
+
+        <Container fluid>
+          <Row className='requests-header'>
+            <h1>Mis solicitudes</h1>
+          </Row>
+          <Row>
+            <Col md={3} lg={6}>
+              <RequestFilter />
+            </Col>
+            <Col md={9} lg={6}>
+              {
+                (
+                  this.state.requests
+                  && this.state.requests.length > 0
+                  && <RequestList list={this.state.requests} />
+                ) || <p> No has hecho ninguna solicitud </p>
+              }
+            </Col>
+          </Row>
+        </Container>
+      </>
     )
   }
 }
