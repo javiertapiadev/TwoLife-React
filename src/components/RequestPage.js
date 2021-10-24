@@ -5,7 +5,7 @@ import { NavBar } from './NavBar'
 import RequestFilter from "./RequestFilter";
 import RequestList from "./RequestList";
 
-import '../css/RequestPage.css'
+import '../styles/RequestPage.css'
 
 class RequestPage extends React.Component {
   state = {

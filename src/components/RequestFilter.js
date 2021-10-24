@@ -1,5 +1,5 @@
 import { Form } from "react-bootstrap"
-import '../css/RequestFilter.css'
+import '../styles/RequestFilter.css'
 
 function RequestFilter({filters}){
   return(
