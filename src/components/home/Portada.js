@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Container, Row } from 'react-bootstrap'
-import '../styles/portada.css';
+import '../../styles/portada.css';
 
 export const Portada = () => {
     return (
