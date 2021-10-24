@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
-import '../css/videogames.css';
+import '../../styles/videogames.css';
 
 function Latests(){
     return (

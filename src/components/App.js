@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Home from './Home';
-import RequestPage from './RequestPage';
-import Ads from './Ads';
+import Home from '../views/Home';
+import RequestPage from '../views/RequestPage';
+import Ads from '../views/Ads';
 
 function App() {
   return (

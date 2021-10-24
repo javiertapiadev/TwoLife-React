@@ -1,11 +1,11 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
-import { NavBar } from './NavBar'
-import RequestFilter from "./RequestFilter";
-import RequestList from "./RequestList";
+import { NavBar } from '../components/NavBar'
+import RequestFilter from "../components/RequestFilter";
+import RequestList from "../components/RequestList";
 
-import '../css/RequestPage.css'
+import '../styles/RequestPage.css'
 
 class RequestPage extends React.Component {
   state = {

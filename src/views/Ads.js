@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import AdCard from './AdCard';
-import { NavBar } from './NavBar'
+import AdCard from '../components/AdCard';
+import { NavBar } from '../components/NavBar'
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
