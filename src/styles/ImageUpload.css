@@ -1,0 +1,28 @@
+.img-picker-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-picker {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.img-picker-label {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    background-color: blueviolet;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.img-picker + .img-picker-label {
+    cursor: pointer;
+}
