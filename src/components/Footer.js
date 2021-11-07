@@ -1,39 +1,60 @@
 import React from 'react';
 import '../styles/footer.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Grid, Stack, AppBar } from '@mui/material/';
+import styled from 'styled-components'
+
+const Link = styled.a`
+  color: black;
+  text-decoration: none;
+`;
+
+const Paragraph = styled.p`
+  color: black;
+`;
 
 function Footer() {
 
-    return (
-        <Container fluid className="footer">
-            <Row className="firstSection">
-                <Col className="sections">
-                    <span>Acerca de Nosotros</span>
-                    <a href="youtube.com" className="links">Quienes somos</a>
-                    <a href="youtube.com" className="links">Trabaja para Nosotros</a>
-                </Col>
-                <Col className="sections">
-                    <span>Redes Sociales</span>
-                    <a href="youtube.com" className="links">LinkedIn</a>
-                    <a href="youtube.com" className="links">Youtube</a>
-                    <a href="youtube.com" className="links">Twitter</a>
-                    <a href="youtube.com" className="links">Reddit</a>
-                </Col>
-                <Col className="sections">
-                    <span>Ayuda</span>
-                    <a href="youtube.com" className="links">Comprar</a>
-                    <a href="youtube.com" className="links">Vender</a>
-                    <a href="youtube.com" className="links">Resolucion de problemas</a>
-                </Col>
-            </Row>
-            <Row className="copyright">
-                <Col>© 1996-2021, twolies.com, Inc. o afiliados. Todos los derechos reservados.</Col>
-                <Col>Condiciones de uso</Col>
-                <Col>Aviso de privacidad</Col>
-            </Row>
-        </Container>
-    )
-
+  return (
+    <>
+      <AppBar position="static" style= {{ backgroundColor: "white" }}>
+        <Grid container>
+          <Grid container xs={4}>
+            <Stack style={{ width: "100%" }}>
+              <Paragraph>Acerca de Nosotros</Paragraph>
+              <Link href="#"> Quienes Somos </Link>
+              <Link href="#"> Trabaja para nosotros </Link>
+            </Stack>
+          </Grid>
+          <Grid container xs={4} style={{ width: "100%" }}>
+            <Stack style={{ width: "100%" }}>
+              <Paragraph>Ayuda</Paragraph>
+              <Link href="#">Comprar</Link>
+              <Link href="#">Vender</Link>
+              <Link href="#">Resolucion de problemas</Link>
+            </Stack>
+          </Grid>
+          <Grid container xs={4}>
+            <Stack style={{ width: "100%" }}>
+              <Paragraph> Nuestras redes sociales </Paragraph>
+              <Link href="#"> Youtube   </Link>
+              <Link href="#"> LinkedIn  </Link>
+              <Link href="#"> Twitter   </Link>
+              <Link href="#"> Facebook  </Link>
+            </Stack>
+          </Grid>
+        </Grid>
+        <Grid container>
+          <Grid item xs={12}>
+            <Stack>
+              <Paragraph>© 1996-2021, twolies.com, Inc. o afiliados. Todos los derechos reservados.</Paragraph>
+              <Link href="#">Condiciones de uso</Link>
+              <Link href="#">Aviso de privacidad</Link>
+            </Stack>
+          </Grid>
+        </Grid>
+      </AppBar>
+    </>
+  )
 };
 
 export default Footer;
