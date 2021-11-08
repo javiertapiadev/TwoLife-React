@@ -45,9 +45,14 @@ export const NavBar = () => {
               />
             </InputGroup>
           </Col>
+          
           <Col sm={3}>
-            <Button variant="danger" size="lg">Comprar</Button>
-            <Button variant="outline-danger" size="lg">Vender</Button>
+            <Link to="/compras">
+              <Button variant="danger" size="lg">Comprar</Button>
+            </Link>
+            <Link to="">
+              <Button variant="outline-danger" size="lg">Vender</Button>
+            </Link>
           </Col>
           <Col>
             <Navbar.Brand href="/">
