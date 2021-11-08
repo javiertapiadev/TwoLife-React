@@ -1,9 +1,9 @@
 import React from 'react';
 import '../styles/footer.css';
-import { Grid, Stack, AppBar } from '@mui/material/';
+import { Grid, Stack, AppBar, Link } from '@mui/material/';
 import styled from 'styled-components'
 
-const Link = styled.a`
+const Linkers = styled(Link)`
   color: black;
   text-decoration: none;
 `;
@@ -21,25 +21,25 @@ function Footer() {
           <Grid container xs={4}>
             <Stack style={{ width: "100%" }}>
               <Paragraph>Acerca de Nosotros</Paragraph>
-              <Link href="#"> Quienes Somos </Link>
-              <Link href="#"> Trabaja para nosotros </Link>
+              <Linkers href="#" underline="hover"> Quienes Somos </Linkers>
+              <Linkers href="#" underline="hover"> Trabaja para nosotros </Linkers>
             </Stack>
           </Grid>
           <Grid container xs={4} style={{ width: "100%" }}>
             <Stack style={{ width: "100%" }}>
               <Paragraph>Ayuda</Paragraph>
-              <Link href="#">Comprar</Link>
-              <Link href="#">Vender</Link>
-              <Link href="#">Resolucion de problemas</Link>
+              <Linkers href="#" underline="hover">Comprar</Linkers>
+              <Linkers href="#" underline="hover">Vender</Linkers>
+              <Linkers href="#" underline="hover">Resolucion de problemas</Linkers>
             </Stack>
           </Grid>
           <Grid container xs={4}>
             <Stack style={{ width: "100%" }}>
               <Paragraph> Nuestras redes sociales </Paragraph>
-              <Link href="#"> Youtube   </Link>
-              <Link href="#"> LinkedIn  </Link>
-              <Link href="#"> Twitter   </Link>
-              <Link href="#"> Facebook  </Link>
+              <Linkers href="#" underline="hover"> Youtube   </Linkers>
+              <Linkers href="#" underline="hover"> LinkedIn  </Linkers>
+              <Linkers href="#" underline="hover"> Twitter   </Linkers>
+              <Linkers href="#" underline="hover"> Facebook  </Linkers>
             </Stack>
           </Grid>
         </Grid>
@@ -47,8 +47,8 @@ function Footer() {
           <Grid item xs={12}>
             <Stack>
               <Paragraph>© 1996-2021, twolies.com, Inc. o afiliados. Todos los derechos reservados.</Paragraph>
-              <Link href="#">Condiciones de uso</Link>
-              <Link href="#">Aviso de privacidad</Link>
+              <Linkers href="#" underline="hover">Condiciones de uso</Linkers>
+              <Linkers href="#" underline="hover">Aviso de privacidad</Linkers>
             </Stack>
           </Grid>
         </Grid>
