@@ -1,93 +1,98 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import {
-  Col, Row, Button,
-  Navbar, Nav, Container,
-  NavDropdown, FormControl,
-  InputGroup
-} from 'react-bootstrap';
-import Dropdown from 'react-bootstrap/Dropdown'
-
 import logo from '../images/logo.png';
+import styled from 'styled-components';
+import { AppBar, Toolbar, Menu, MenuItem, 
+  InputBase, Stack, ButtonGroup, Button, Grid } from '@mui/material/';
+import { AccountCircle, Notifications } from '@mui/icons-material/';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import SearchIcon from '@mui/icons-material/Search';
 
-export const NavBar = () => {
+const Logo = styled.img`
+  width: 8vw;
+  height: 18vh;
+`;
+
+const Searcher = styled(Stack)`
+  background-color: yellow; 
+  display: flex;
+`;
+
+const AccountIcon= styled(AccountCircle)`
+  height: 9vh;
+  width: 5vw;
+`;
+
+function NavBar() {
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <Container fluid>
-      <Col>
-        <Row>
-          <Col sm={2}>
-            <Dropdown>
-              <Dropdown.Toggle id="dropdown-basic">
-                Logueado como: <a style={{color: "white"}} href="#login">Admin</a>
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item>
-                  <Link to="/myrequests">Mis solicitudes</Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="/myads">Mis anuncios</Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            
-          </Col>
-          <Col sm={5}>
-            <InputGroup className="mb-3">
-              <Button variant="outline-secondary" id="button-addon1">
-                Button
-              </Button>
-              <FormControl
-                placeholder="Buscar... ej: Call of Dutty"
-                aria-label="Example text with button addon"
-                aria-describedby="basic-addon1"
-              />
-            </InputGroup>
-          </Col>
-          <Col sm={3}>
-            <Button variant="danger" size="lg">Comprar</Button>
-            <Button variant="outline-danger" size="lg">Vender</Button>
-          </Col>
-          <Col>
-            <Navbar.Brand href="/">
-              <img
-                alt=""
-                src={logo}
-                width="50"
-                height="50"
-                className="d-inline-block align-center"
-              />{' '}
-              Two Life
-            </Navbar.Brand>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-              <Container>
-                <Navbar.Brand href="#home">Shopping</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                  <Nav className="me-auto">
-                    <NavDropdown title="Categorias" id="collasible-nav-dropdown">
-                      <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item href="#action/3.4">Usados</NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.4">Nuevos</NavDropdown.Item>
-                    </NavDropdown>
-                    <Nav.Link href="#pricing">Recomendados</Nav.Link>
-                    <Nav.Link href="#pricing">Recientes</Nav.Link>
-                    <Nav.Link href="#pricing">Lanzamientos</Nav.Link>
-                  </Nav>
-                </Navbar.Collapse>
-              </Container>
-            </Navbar>
-          </Col>
-        </Row>
-      </Col>
-    </Container>
+      <AppBar position="static">
+        <Toolbar variant="dense">
+          <Logo src={logo} alt="logo"/>
+          <Button style= {{ backgroundColor: "white" }}
+        id="basic-button"
+        aria-controls="basic-menu"
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        endIcon={<KeyboardArrowDownIcon />}
+      >
+        Dashboard
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleClose}>
+          <Link to="/myrequests">Mis solicitudes</Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+        <Link to="/myads">Mis anuncios</Link>
+        </MenuItem>
+          </Menu>
+            <Notifications/>
+            <Searcher direction="row">
+                <SearchIcon />
+                <InputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+          </Searcher>
+          <ButtonGroup disableElevation variant="contained">
+            <Button>
+              <Link to="/myads">Comprar</Link>
+            </Button>
+            <Button>
+              <Link to="/myads">Vender</Link>
+            </Button>
+          </ButtonGroup>
+          <Stack direction="row" style = {{ backgroundColor: "red" }}>
+          <AccountIcon style = {{ backgroundColor: "black" }} />
+          <Grid direction="column" alignItems="center" style = {{ backgroundColor: "green" }}>
+            <Stack> My Acount </Stack>
+            <Stack direction="row">
+              <Stack> Login </Stack>
+              <Stack> Sign In </Stack>  
+            </Stack>
+          </Grid>
+          </Stack>
+        </Toolbar>
+      </AppBar>
   )
 }
+
+export default NavBar;
