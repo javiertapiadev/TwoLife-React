@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from '../views/Home';
 import RequestPage from '../views/RequestPage';
 import Ads from '../views/Ads';
-import ImageUpload from './ImageUpload';
+import Sell from '../views/Sell';
+import Upload from '../components/sell/upload'
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route exact path="/myrequests" component={RequestPage} />
           <Route exact path="/myads" component={Ads} />
           <Route exact path="/" component={Home} />
-          <Route exact path="/form" component={ImageUpload} />
+          <Route exact path="/sell" component={Sell} />
+          <Route exact path="/upload" component={Upload} />
         </Switch>
       </Router>
     </>

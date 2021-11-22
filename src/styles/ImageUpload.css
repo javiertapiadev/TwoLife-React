@@ -1,3 +1,48 @@
+* {
+    box-sizing: border-box;
+
+}
+
+.error {
+    margin-bottom: 5px;
+    font-size: 12px
+}
+
+.error-small {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.form {
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.grid-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+  /* background-color: blueviolet; */
+}
+
+.imgs-data {
+    grid-column: 1 / 6;
+    grid-row: 2 / 3;
+}
+
+.imgs-data > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .img-picker-cont {
     display: flex;
     justify-content: center;
@@ -14,15 +59,78 @@
 }
 
 .img-picker-label {
+    display: inline-block;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 5px;
-    background-color: blueviolet;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #0f2026;
     border-radius: 5px;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .img-picker + .img-picker-label {
     cursor: pointer;
+}
+
+.text-data {
+    grid-column: 1 / 6;
+    grid-row: 1;
+    padding-top: 25px;
+    /* background-color: cornflowerblue; */
+    max-width: 100%;
+}
+
+.description-section {
+    display: block;
+    box-sizing: border-box;
+    max-width: 90%;
+    outline: none;
+    resize: none;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button-cont {
+    grid-column: 1 / 6;
+    grid-row: 3 / 4;
+    min-height: 80px;
+    text-align: center;
+    /* background-color: blueviolet; */
+}
+
+.submit-button {
+    width: 150px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: #5271ff;
+}
+
+@media(min-width: 825px) {
+    .form {
+        margin-top: 20px;
+    }
+    .grid-container {
+        gap: 30px;
+    }
+    .imgs-data {
+        grid-column: 1 / 2;
+        grid-row: 1 / 5;
+    }
+
+    .text-data {
+        grid-column: 2 / 6;
+        grid-row: 1 / 4;
+    }
+
+    .button-cont {
+        grid-column: 2 / 6;
+        grid-row: 4 / 5;
+    }
 }
