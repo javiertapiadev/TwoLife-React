@@ -1,5 +1,5 @@
 import TextField from '@mui/material/TextField';
-import ErrorMessage from '../ErrorMessage';
+import ValidationError from '../common/ValidationError';
 
 export default function PriceInput({isDisabled, register, errors}) {
     return (
@@ -20,8 +20,8 @@ export default function PriceInput({isDisabled, register, errors}) {
                 />
             </div>
 
-            {errors.price && errors.price.type === "required" && <ErrorMessage message="Debes ingresar un precio" small />}
-            {errors.price && errors.price.type === "pattern" && <ErrorMessage message="Debes ingresar un número" small />}
+            {errors.price && errors.price.type === "required" && <ValidationError message="Debes ingresar un precio" small />}
+            {errors.price && errors.price.type === "pattern" && <ValidationError message="Debes ingresar un número" small />}
         </div>
     )
 }

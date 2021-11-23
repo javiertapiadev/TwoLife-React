@@ -1,6 +1,6 @@
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
-export default function ErrorMessage({ message, small }) {
+export default function ValidationError({ message, small }) {
     let list = "error"
     if (small) list = list + " error-small"
 

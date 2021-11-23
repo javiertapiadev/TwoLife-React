@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import SingleImage from './SingleImage'
+import SingleImage from '../layout/SingleImage'
 
 export default function Upload() {
     const [mainImg, setMainImg] = useState("");

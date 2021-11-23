@@ -1,12 +1,12 @@
 import Input from '@mui/material/Input';
 
-export default function AdFormButton({isDisabled}) {
+export default function SubmitButton({isDisabled, value, style}) {
     return (
         <Input
             type="submit"
-            value="Crear anuncio"
+            value={value}
             className="submit-button"
-            style={{ color: "white" }}
+            style={{...style}}
             disabled={isDisabled} />
     )
 }

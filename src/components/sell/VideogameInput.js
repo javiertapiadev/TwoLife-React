@@ -2,8 +2,7 @@ import { createFilterOptions } from '@mui/material/Autocomplete';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
-import ErrorMessage from '../ErrorMessage';
-
+import ValidationError from '../common/ValidationError'
 const filter = createFilterOptions();
 
 export default function VideogameInput({isDisabled, register, errors, videogameData, setIdVideogame, setVideogameTitle}) {
@@ -68,7 +67,7 @@ export default function VideogameInput({isDisabled, register, errors, videogameD
                 }
             />
 
-            {errors.videogame && <ErrorMessage message="Debes ingresar un videojuego" />}
+            {errors.videogame && <ValidationError message="Debes ingresar un videojuego" />}
         </>
     )
 }

@@ -1,4 +1,4 @@
-import ErrorMessage from '../ErrorMessage';
+import ValidationError from '../common/ValidationError';
 
 export default function ConditionInput({isDisabled, register, errors}) {
     return (
@@ -28,7 +28,7 @@ export default function ConditionInput({isDisabled, register, errors}) {
             </div>
 
 
-            {errors.condition && <ErrorMessage message="Debes escoger un estado" small />}
+            {errors.condition && <ValidationError message="Debes escoger un estado" small />}
         </div>
     )
 }

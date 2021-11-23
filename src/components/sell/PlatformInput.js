@@ -1,4 +1,4 @@
-import ErrorMessage from '../ErrorMessage';
+import ValidationError from '../common/ValidationError';
 
 export default function PlatformInput({isDisabled, register, errors, platformList}) {
     return (
@@ -19,7 +19,7 @@ export default function PlatformInput({isDisabled, register, errors, platformLis
                 {platformList.map(item => <option value={item._id} key={item.platform} > {item.platform} </option>)}
             </select>
             
-            {errors.idPlatform && <ErrorMessage message="Debes escoger una consola" small />}
+            {errors.idPlatform && <ValidationError message="Debes escoger una consola" small />}
         </div>
     )
 }

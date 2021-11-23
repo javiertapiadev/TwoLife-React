@@ -1,10 +1,10 @@
-import ErrorMessage from '../ErrorMessage';
+import ValidationError from '../common/ValidationError';
 
 export default function DescriptionInput({isDisabled, register, errors}) {
     return(
         <div style={{ maxWidth: "100%", paddingTop: "20px" }}>
                 <h2 style={{ maxWidth: "90%", marginLeft: "auto", marginRight: "auto" }}>Descripción:</h2>
-                {errors.description && <ErrorMessage message="Debes ingresar una descripción" />}
+                {errors.description && <ValidationError message="Debes ingresar una descripción" />}
                 <textarea
                     type="text"
                     id="description"

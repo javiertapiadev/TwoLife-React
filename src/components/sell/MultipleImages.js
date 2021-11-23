@@ -10,10 +10,22 @@ export default function MultipleImages({optionalImgs, handleDeleteImg, handleMul
                 sx={{ width: 250, height: 250, marginTop: "16px", marginLeft: "auto", marginRight: "auto" }}
                 cols={2}
                 rowHeight={125} >
-                    <ImageItem optionalImgs={optionalImgs} index={0} handleDeleteImg={handleDeleteImg} />
-                    <ImageItem optionalImgs={optionalImgs} index={1} handleDeleteImg={handleDeleteImg} />
-                    <ImageItem optionalImgs={optionalImgs} index={2} handleDeleteImg={handleDeleteImg} />
-                    <ImageItem optionalImgs={optionalImgs} index={3} handleDeleteImg={handleDeleteImg} />
+                    <ImageItem 
+                        optionalImgs={optionalImgs}
+                        index={0}
+                        handleDeleteImg={handleDeleteImg} />
+                    <ImageItem 
+                        optionalImgs={optionalImgs}
+                        index={1}
+                        handleDeleteImg={handleDeleteImg} />
+                    <ImageItem
+                        optionalImgs={optionalImgs}
+                        index={2}
+                        handleDeleteImg={handleDeleteImg} />
+                    <ImageItem
+                        optionalImgs={optionalImgs}
+                        index={3}
+                        handleDeleteImg={handleDeleteImg} />
             </ImageList>
 
             <input

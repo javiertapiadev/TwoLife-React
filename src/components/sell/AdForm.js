@@ -5,10 +5,10 @@ import Grid from '@mui/material/Grid';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import SingleImage from './SingleImage';
+import SingleImage from '../layout/SingleImage';
 import MultipleImages from './MultipleImages';
 import AdFormInputs from './AdFormInputs';
-import AdFormButton from './AdFormButton';
+import SubmitButton from '../common/SubmitButton';
 
 import '../../styles/ImageUpload.css'
 
@@ -39,12 +39,6 @@ export default function AdForm() {
         handleSubmit,
         formState: { errors },
     } = useForm()
-
-    // const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/davvj8x6l/image/upload'
-    // const CLOUDINARY_PRESET = 'dx1lr4o8'
-    // const TL_PLATF_URL = 'https://twolifes.herokuapp.com/v1/platforms'
-    // const TL_TITL_URL = 'https://twolifes.herokuapp.com/v1/videogames/titles'
-    // const TL_VDGM_POST = 'http://localhost:4001/v1/videogames'
 
     // Llenar listado de plataformas
     useEffect(() => {
@@ -199,7 +193,7 @@ export default function AdForm() {
                             isDisabled={isDisabled}
                             register={register}
                             errors={errors}
-                            mainImg={mainImg}
+                            image={mainImg}
                             handleFileChoosed={handleFileChoosed}/>
                         <MultipleImages
                             optionalImgs={optionalImgs}
@@ -224,7 +218,7 @@ export default function AdForm() {
                 </Grid>
 
                 <Grid item order={{ xs: 3 }} className="button-cont">
-                    <AdFormButton isDisabled={isDisabled} />
+                    <SubmitButton isDisabled={isDisabled} value="Crear anuncio" style={{ color: "white" }}/>
                 </Grid>
 
                 <Backdrop
