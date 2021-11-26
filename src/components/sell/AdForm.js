@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 
 import Grid from '@mui/material/Grid';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
 
 import SingleImage from '../layout/SingleImage';
 import MultipleImages from './MultipleImages';
@@ -12,7 +10,7 @@ import SubmitButton from '../common/SubmitButton';
 
 import './styles.css'
 
-export default function AdForm() {
+export default function AdForm({setIsSubmitting, setIsOpen}) {
     // Lista de plataformas y opciones de autocompletado
     const [platformList, setPlatformList] = useState([]);
     const [videogameData, setVideogameData] = useState([]);
@@ -25,10 +23,8 @@ export default function AdForm() {
     const [idVideogame, setIdVideogame] = useState("");
     const [videogameTitle, setVideogameTitle] = useState("");
 
-    // Feedback para el usuario
+    // Deshabilitar inputs
     const [isDisabled, setIsDisabled] = useState(false);
-    const [open, setOpen] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     // Esto lo podría mandar al multiple images
     const [isOverLimit, setIsOverLimit] = useState(false);
@@ -144,9 +140,9 @@ export default function AdForm() {
 
     const onSubmit = async (data) => {
         // Deshabilitar form
-        // setOpen(!open)
-        // setIsDisabled(!isDisabled)
-        // setIsSubmitting(!isSubmitting)
+        setIsDisabled(!isDisabled)
+        setIsOpen(true)
+        setIsSubmitting(true)
 
         const { mainImg, videogame, ...adData } = data
 
@@ -155,8 +151,9 @@ export default function AdForm() {
 
         adData.mainImgURL = await uploadImg(mainImgFile)
         adData.optionalImgsURL = await Promise.all( optionalImgs.map(async (image) => uploadImg(image)) )
-        
-        console.log(adData)
+
+        console.log("Listo!", adData)
+        setIsSubmitting(false)
     }
 
     return (
@@ -201,15 +198,6 @@ export default function AdForm() {
                 <Grid item order={{ xs: 3 }} className="button-cont">
                     <SubmitButton isDisabled={isDisabled} value="Crear anuncio" style={{ color: "white" }}/>
                 </Grid>
-
-                <Backdrop
-                    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                    open={open} >
-
-                    { (isSubmitting && <CircularProgress color="inherit" />) ||
-                        <div>Anuncio creado!</div>
-                    }
-                </Backdrop>
             </div>
         </form>
     )
