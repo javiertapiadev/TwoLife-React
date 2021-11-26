@@ -18,21 +18,20 @@ export default function AdForm() {
     const [videogameData, setVideogameData] = useState([]);
 
     // Imágenes para preview
-    const [mainImg, setMainImg] = useState("");
+    const [mainImgFile, setMainImgFile] = useState("");
     const [optionalImgs, setOptionalImgs] = useState([]);
     
     // Datos a enviar al POST de anuncios
-    const [mainImgURL, setMainImgURL] = useState("");
-    const [optionalImgsURL, setOptionalImgsURL] = useState([]);
     const [idVideogame, setIdVideogame] = useState("");
     const [videogameTitle, setVideogameTitle] = useState("");
-    const [adData, setAdData] = useState({})
 
     // Feedback para el usuario
     const [isDisabled, setIsDisabled] = useState(false);
     const [open, setOpen] = useState(false);
-    const [isOverLimit, setIsOverLimit] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    // Esto lo podría mandar al multiple images
+    const [isOverLimit, setIsOverLimit] = useState(false);
 
     const {
         register,
@@ -51,10 +50,8 @@ export default function AdForm() {
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/videogames/titles`)
         .then(res => res.json())
-        .then(data => {
-            setVideogameData(data)
-        })
-    })
+        .then(data => { setVideogameData(data) })
+    }, [])
 
     // Preview de imagen principal
     const handleFileChoosed = (e) => {
@@ -64,7 +61,7 @@ export default function AdForm() {
         fileReader.readAsDataURL(file);
 
         fileReader.onloadend = () => {
-            setMainImg(fileReader.result)
+            setMainImgFile(fileReader.result)
         }
     }
 
@@ -98,25 +95,6 @@ export default function AdForm() {
         setOptionalImgs(aux)
     }
 
-    const onSubmit = (data) => {
-        // Deshabilitar form
-        setOpen(!open)
-        setIsDisabled(!isDisabled)
-        setIsSubmitting(!isSubmitting)
-
-        // Preparar body del POST
-        const { condition, description, idPlatform, price } = data
-        setAdData({ condition, description, idPlatform, price })
-
-        // Si el usuario ingresó un juego nuevo, hay que crearlo
-        if (idVideogame.length > 0) setAdData(prevState => { return { ...prevState, idVideogame } })
-        else createVideogame()
-
-        // Subir imágenes
-        tryUpload(mainImg, true)
-        optionalImgs.forEach(image => tryUpload(image, false))
-    }
-
     const createVideogame = async () => {
         const requestOptions = {
             method: 'POST',
@@ -137,16 +115,14 @@ export default function AdForm() {
             const data = await response.json()
             
             setIdVideogame(data._id)
-            setAdData(prevState => { return { ...prevState, idVideogame } })
+            return data._id
         }
         catch (error) {
             console.log(error)
         }
     }
 
-    // Subir imágenes y obtener URLs
-    const tryUpload = async (image, isMainImg) => {
-        
+    const uploadImg = async (image) => {
         const formData = new FormData()
         formData.append('file', image);
 
@@ -158,31 +134,34 @@ export default function AdForm() {
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL}/images`, requestOptions)
             const data = await response.json()
-
-            if (isMainImg) await setMainImgURL(data.secure_url)
-            else await setOptionalImgsURL(prevURLs => [...prevURLs, data.secure_url])
+            
+            return data.secure_url
         }
         catch (error) {
             console.log(error)
         }
     }
 
-    // Añadir URLs de imágenes al body del POST
-    useEffect(() => {
-        if (mainImgURL !== "" && optionalImgsURL.length === optionalImgs.length) {
-            setAdData(prevState => { return { ...prevState, mainImgURL, optionalImgsURL } })
-        }
-    }, [mainImgURL, optionalImgsURL])
+    const onSubmit = async (data) => {
+        // Deshabilitar form
+        // setOpen(!open)
+        // setIsDisabled(!isDisabled)
+        // setIsSubmitting(!isSubmitting)
 
-    // Petición POST
-    useEffect(() => {
-        if (Object.keys(adData).includes("mainImgURL")) { console.log("yastas", adData); setIsSubmitting(!isSubmitting)}
-    }, [adData])
+        const { mainImg, videogame, ...adData } = data
+
+        if (idVideogame === '') adData.idVideogame = await createVideogame()
+        else adData.idVideogame = idVideogame
+
+        adData.mainImgURL = await uploadImg(mainImgFile)
+        adData.optionalImgsURL = await Promise.all( optionalImgs.map(async (image) => uploadImg(image)) )
+        
+        console.log(adData)
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="ad-form">
             <div className="grid-container">
-
                 {/* Preview de imágenes */}
                 <Grid
                     container
@@ -194,7 +173,7 @@ export default function AdForm() {
                             register={register}
                             field="mainImg"
                             errors={errors}
-                            image={mainImg}
+                            image={mainImgFile}
                             handleFileChoosed={handleFileChoosed}
                             styles={{borderRadius: "15px"}}/>
                         <MultipleImages
@@ -232,7 +211,6 @@ export default function AdForm() {
                     }
                 </Backdrop>
             </div>
-
         </form>
     )
 }
