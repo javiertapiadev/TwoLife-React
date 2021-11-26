@@ -8,6 +8,10 @@ import SignUpForm from '../components/signup/SignUpForm';
 import { useState } from 'react';
 
 export default function SignUp() {
+    // Agregar iconos
+    // Agregar link hacia el login
+    // Hacer algo cuando se logra crear
+    // Informar al usuario si introdujo algo mal
 
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isOpen, setIsOpen] = useState(false)

@@ -7,7 +7,7 @@ export default function MultipleImages({optionalImgs, handleDeleteImg, handleMul
     return (
         <div style={{ marginBottom: "15px", textAlign: "center" }}>
             <ImageList 
-                sx={{ width: 250, height: 250, marginTop: "16px", marginLeft: "auto", marginRight: "auto" }}
+                sx={{ width: 250, height: 250, marginLeft: "auto", marginRight: "auto" }}
                 cols={2}
                 rowHeight={125} >
                     <ImageItem 

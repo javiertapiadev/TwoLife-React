@@ -1,10 +1,5 @@
-* {
-    box-sizing: border-box;
-
-}
-
-.form {
-    width: 90%;
+.ad-form {
+    width: 70%;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -12,32 +7,31 @@
     justify-content: space-around;
 }
 
-.grid-container {
+.ad-form .grid-container {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto auto;
-  gap: 20px;
-  /* background-color: blueviolet; */
+    grid-template-rows: auto auto auto;
+    gap: 20px;
 }
 
-.imgs-data {
+.ad-form .imgs-data {
     grid-column: 1 / 6;
     grid-row: 2 / 3;
 }
 
-.imgs-data > * {
+.ad-form .imgs-data > * {
     margin-left: auto;
     margin-right: auto;
 }
 
-.img-picker-cont {
+.ad-form .img-picker-cont {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.img-picker {
+.ad-form .img-picker {
     width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
@@ -46,7 +40,7 @@
 	z-index: -1;
 }
 
-.img-picker-label {
+.ad-form .img-picker-label {
     display: inline-block;
     padding-left: 10px;
     padding-right: 10px;
@@ -60,19 +54,18 @@
     cursor: pointer;
 }
 
-.img-picker + .img-picker-label {
+.ad-form .img-picker + .img-picker-label {
     cursor: pointer;
 }
 
-.text-data {
+.ad-form .text-data {
     grid-column: 1 / 6;
     grid-row: 1;
     padding-top: 25px;
-    /* background-color: cornflowerblue; */
     max-width: 100%;
 }
 
-.description-section {
+.ad-form .description-section {
     display: block;
     box-sizing: border-box;
     max-width: 90%;
@@ -84,15 +77,14 @@
     margin-right: auto;
 }
 
-.button-cont {
+.ad-form .button-cont {
     grid-column: 1 / 6;
     grid-row: 3 / 4;
     min-height: 80px;
     text-align: center;
-    /* background-color: blueviolet; */
 }
 
-.submit-button {
+.ad-form .submit-button {
     width: 150px;
     padding: 5px 10px;
     border-radius: 10px;
@@ -101,23 +93,25 @@
 }
 
 @media(min-width: 825px) {
-    .form {
+    .ad-form {
         margin-top: 20px;
     }
-    .grid-container {
+    
+    .ad-form .grid-container {
         gap: 30px;
     }
-    .imgs-data {
+
+    .ad-form .imgs-data {
         grid-column: 1 / 2;
         grid-row: 1 / 5;
     }
 
-    .text-data {
+    .ad-form .text-data {
         grid-column: 2 / 6;
         grid-row: 1 / 4;
     }
 
-    .button-cont {
+    .ad-form .button-cont {
         grid-column: 2 / 6;
         grid-row: 4 / 5;
     }

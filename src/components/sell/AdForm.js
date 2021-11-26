@@ -10,7 +10,7 @@ import MultipleImages from './MultipleImages';
 import AdFormInputs from './AdFormInputs';
 import SubmitButton from '../common/SubmitButton';
 
-import '../../styles/ImageUpload.css'
+import './styles.css'
 
 export default function AdForm() {
     // Lista de plataformas y opciones de autocompletado
@@ -180,7 +180,7 @@ export default function AdForm() {
     }, [adData])
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="form">
+        <form onSubmit={handleSubmit(onSubmit)} className="ad-form">
             <div className="grid-container">
 
                 {/* Preview de imágenes */}
