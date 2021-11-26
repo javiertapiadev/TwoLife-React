@@ -192,9 +192,11 @@ export default function AdForm() {
                         <SingleImage
                             isDisabled={isDisabled}
                             register={register}
+                            field="mainImg"
                             errors={errors}
                             image={mainImg}
-                            handleFileChoosed={handleFileChoosed}/>
+                            handleFileChoosed={handleFileChoosed}
+                            styles={{borderRadius: "15px"}}/>
                         <MultipleImages
                             optionalImgs={optionalImgs}
                             handleDeleteImg={handleDeleteImg}

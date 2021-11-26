@@ -7,7 +7,7 @@ import ImagePreview from '../layout/ImagePreview';
 export default function ImageItem({optionalImgs, index, handleDeleteImg}) {
     return (
         <div style={{ position: "relative" }}>
-            <ImagePreview src={optionalImgs[index] || ""} />
+            <ImagePreview src={optionalImgs[index] || ""} styles={{borderRadius: "15px"}}/>
             {optionalImgs[index] &&
                 <Fade in timeout={700}>
                     <IconButton

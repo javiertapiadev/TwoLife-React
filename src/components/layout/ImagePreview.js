@@ -8,8 +8,8 @@ export default function ImagePreview({src, styles}) {
             disableSpinner
             src={src}
             className="img"
-            style={{ ...styles, borderRadius: "15px" }}
-            imageStyle={{ borderRadius: "15px" }}
+            style={{ ...styles, maxWidth: "100%"}}
+            imageStyle={{ ...styles }}
         />
     )
 }

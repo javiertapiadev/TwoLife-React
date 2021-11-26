@@ -7,6 +7,6 @@ export default function SubmitButton({isDisabled, value, style}) {
             value={value}
             className="submit-button"
             style={{...style}}
-            disabled={isDisabled} />
+            disabled={isDisabled}/>
     )
 }

@@ -1,12 +1,14 @@
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
+import './styles.css'
+
 export default function ValidationError({ message, small }) {
     let list = "error"
     if (small) list = list + " error-small"
 
     return <p className={list}>
-        <small style={{ color: "red", fontSize: "12px" }}>
-            <ErrorOutlineIcon style={{ fontSize: "13px", verticalAlign: "-14%" }} /> {message}
+        <small style={{ color: "red"}}>
+            <ErrorOutlineIcon style={{ fontSize: "19px", verticalAlign: "-15%" }} /> {message}
         </small>
     </p>
 }
