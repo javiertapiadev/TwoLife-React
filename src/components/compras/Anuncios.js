@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import AdCard from '../AdCard'
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
 
