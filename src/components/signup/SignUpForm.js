@@ -7,14 +7,14 @@ import SingleImage from '../layout/SingleImage'
 import SubmitButton from '../common/SubmitButton';
 import ValidationError from '../common/ValidationError';
 
+import { uploadImg } from '../herlpers'
+
 import './styles.css'
 
 const styles = {
-    
-        style: {
-            color: "white"
-        }
-    
+    style: {
+        color: "white"
+    }
 }
 
 const Upload = ({setIsSubmitting, setIsOpen}) => {
@@ -37,31 +37,12 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
         }
     }
 
-    const tryUpload = async () => {
-        const formData = new FormData()
-        formData.append('file', profilePic);
-
-        const requestOptions = {
-            method: 'POST',
-            body: formData
-        };
-
-        try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/images`, requestOptions)
-            const data = await response.json()
-            return data.secure_url
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
-
     const onSubmit = async (data) => {
         setIsSubmitting(true)
         setIsOpen(true)
 
-        const url = await tryUpload()
         const { profilePic, ...userData } = data
+        const url = await uploadImg(profilePic)
         userData["profile_pic"] = url
 
         const requestOptions = {
@@ -91,7 +72,6 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
             console.log(error)
         }
     }
-
     
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="signup-form" autoComplete="off">
@@ -131,7 +111,6 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
                     {errors.firstname && errors.firstname.type === "required" && <ValidationError message="Debes ingresar un nombre" />}
                     {errors.firstname && errors.firstname.type === "pattern" && <ValidationError message="Sólo puedes ingresar letras" />}
 
-
                     <TextField
                         label="Apellido"
                         variant="filled"
@@ -143,7 +122,6 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
 
                     {errors.lastname && errors.lastname.type === "required" && <ValidationError message="Debes ingresar un apellido" />}
                     {errors.lastname && errors.lastname.type === "pattern" && <ValidationError message="Sólo puedes ingresar letras" />}
-
 
                     <TextField
                         type="email"
@@ -157,7 +135,6 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
 
                     {errors.email && <ValidationError message="Debes ingresar un email" />}
 
-
                     <TextField
                         type="password"
                         label="Contraseña"
@@ -170,9 +147,16 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
 
                     {errors.password && <ValidationError message="Debes ingresar una contraseña" />}
                 </div>
+
                 <div className="button-cont">
-                    <SubmitButton value="Registrarse" style={{color: "white", fontWeight: "bold" }}/>
-                    <p style={{ marginTop: "10px", color: "#AAA" }}>¿Ya tienes una cuenta? <span style={{ color: "white" }}>Inicia sesión</span></p>
+                    <SubmitButton 
+                        value="Registrarse" 
+                        style={{color: "white", fontWeight: "bold" }}/>
+
+                    <p style={{ marginTop: "10px", color: "#AAA" }}>
+                        ¿Ya tienes una cuenta?
+                        <span style={{ color: "white" }}>Inicia sesión</span>
+                    </p>
                 </div>
             </div> 
         </form>

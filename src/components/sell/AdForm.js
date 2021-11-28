@@ -8,6 +8,8 @@ import MultipleImages from './MultipleImages';
 import AdFormInputs from './AdFormInputs';
 import SubmitButton from '../common/SubmitButton';
 
+import { uploadImg, createVideogame } from '../herlpers';
+
 import './styles.css'
 
 export default function AdForm({setIsSubmitting, setIsOpen}) {
@@ -25,9 +27,6 @@ export default function AdForm({setIsSubmitting, setIsOpen}) {
 
     // Deshabilitar inputs
     const [isDisabled, setIsDisabled] = useState(false);
-
-    // Esto lo podría mandar al multiple images
-    const [isOverLimit, setIsOverLimit] = useState(false);
 
     const {
         register,
@@ -61,83 +60,6 @@ export default function AdForm({setIsSubmitting, setIsOpen}) {
         }
     }
 
-    // Preview de imágenes extra
-    const handleMultipleFiles = (e) => {
-        const fileList = e.target.files
-        const files = [...fileList]
-
-        if (files.length + optionalImgs.length <= 4) {
-            setIsOverLimit(false)
-
-            files.forEach(file => {
-                const fileReader = new FileReader();
-
-                fileReader.readAsDataURL(file);
-
-                fileReader.onloadend = () => {
-                    setOptionalImgs(prevImgs => [...prevImgs, fileReader.result])
-                }
-            })
-        } else {
-            setIsOverLimit(true)
-        }
-    }
-
-    const handleDeleteImg = (e) => {
-        let index = e.currentTarget.id
-        const aux = [...optionalImgs]
-
-        aux.splice(index, 1)
-        setOptionalImgs(aux)
-    }
-
-    const createVideogame = async () => {
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: videogameTitle.toLowerCase(),
-                synopsis: "",
-                releaseDate: "0001-01-01T00:00:00.000Z",
-                ageCategory: ""
-            })
-        }
-        
-        try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/videogames`, requestOptions)
-            const data = await response.json()
-            
-            setIdVideogame(data._id)
-            return data._id
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
-
-    const uploadImg = async (image) => {
-        const formData = new FormData()
-        formData.append('file', image);
-
-        const requestOptions = {
-            method: 'POST',
-            body: formData
-        };
-
-        try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/images`, requestOptions)
-            const data = await response.json()
-            
-            return data.secure_url
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
-
     const onSubmit = async (data) => {
         // Deshabilitar form
         setIsDisabled(!isDisabled)
@@ -146,7 +68,7 @@ export default function AdForm({setIsSubmitting, setIsOpen}) {
 
         const { mainImg, videogame, ...adData } = data
 
-        if (idVideogame === '') adData.idVideogame = await createVideogame()
+        if (idVideogame === '') adData.idVideogame = await createVideogame(videogameTitle, setIdVideogame)
         else adData.idVideogame = idVideogame
 
         adData.mainImgURL = await uploadImg(mainImgFile)
@@ -175,11 +97,8 @@ export default function AdForm({setIsSubmitting, setIsOpen}) {
                             styles={{borderRadius: "15px"}}/>
                         <MultipleImages
                             optionalImgs={optionalImgs}
-                            handleDeleteImg={handleDeleteImg}
-                            handleMultipleFiles={handleMultipleFiles}
-                            isDisabled={isDisabled}
-                            isOverLimit={isOverLimit}
-                            setIsOverLimit={setIsOverLimit} />
+                            setOptionalImgs={setOptionalImgs}
+                            isDisabled={isDisabled}/>
                 </Grid>
 
                 {/* Inputs que no son imágenes */}
