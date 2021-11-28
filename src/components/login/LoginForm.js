@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import { useForm } from "react-hook-form";
 import TextField from '@mui/material/TextField';
 import './loginForm.css'
@@ -8,20 +8,35 @@ import Button from '@restart/ui/esm/Button';
 
 
 
-function onLogin(){
-  const 
-}
 
-async function login(){
- 
-}
 
 function LoginForm(){ 
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
+
+const {authState,dispatch}=useContext(authContext)
+
+async function onLogin(data){
+ const response = await fetch(`${process.env.REACT_API_API_URL}/login}`,
+   {
+     method:'POST',
+     body:data
+   }
+ )
+ try{
+   const data = await response.json()
+
+   return data
+ }catch(error){
+   console.log(error)
+ }
+
+}
+
   return (
     <form onSubmit={handleSubmit(onLogin)} sx={{width:'100vw'}} >
       <div className='card-form' /* sx={{ display: 'flex',flexDirection:'column' , padding:'10px', width:'90vw', height:'70vh',justifyContent:'center'}} */>
