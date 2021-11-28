@@ -8,24 +8,20 @@ import MultipleImages from './MultipleImages';
 import AdFormInputs from './AdFormInputs';
 import SubmitButton from '../common/SubmitButton';
 
-import { uploadImg, createVideogame } from '../herlpers';
+import { uploadImg, createVideogame, postResource } from '../helpers';
 
 import './styles.css'
 
-export default function AdForm({setIsSubmitting, setIsOpen}) {
-    // Lista de plataformas y opciones de autocompletado
+export default function AdForm({setIsSubmitting, setIsOpen, setIsPosted}) {
     const [platformList, setPlatformList] = useState([]);
     const [videogameData, setVideogameData] = useState([]);
 
-    // Imágenes para preview
     const [mainImgFile, setMainImgFile] = useState("");
     const [optionalImgs, setOptionalImgs] = useState([]);
     
-    // Datos a enviar al POST de anuncios
     const [idVideogame, setIdVideogame] = useState("");
     const [videogameTitle, setVideogameTitle] = useState("");
 
-    // Deshabilitar inputs
     const [isDisabled, setIsDisabled] = useState(false);
 
     const {
@@ -62,8 +58,9 @@ export default function AdForm({setIsSubmitting, setIsOpen}) {
         adData.mainImgURL = await uploadImg(mainImgFile)
         adData.optionalImgsURL = await Promise.all( optionalImgs.map(async (image) => uploadImg(image)) )
 
-        console.log("Listo!", adData)
+        const posted = await postResource(adData, "ads", true)
         setIsSubmitting(false)
+        setIsPosted(posted)
     }
 
     return (

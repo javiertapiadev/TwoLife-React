@@ -45,7 +45,39 @@ const createVideogame = async (videogameTitle, setIdVideogame) => {
     }
 }
 
+const postResource = async (body, path, isAd) => {
+    if (isAd) body.idAdvertiser = "61520646ae73563db061bb36"
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    };
+
+    try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/${path}`, requestOptions)
+        
+        if(response.status === 200) {
+            const data = await response.json()
+            console.log("Recurso creado!")
+            console.log(data)
+            return true
+        }
+
+        console.log("No se ha podido crear el resurso. Status: ", response.status)
+        return false
+    }
+    catch (error) {
+        console.log(error)
+        return false
+    }
+}
+
 module.exports = {
     uploadImg,
-    createVideogame
+    createVideogame,
+    postResource
 }

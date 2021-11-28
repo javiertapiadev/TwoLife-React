@@ -7,7 +7,7 @@ import SingleImage from '../layout/SingleImage'
 import SubmitButton from '../common/SubmitButton';
 import ValidationError from '../common/ValidationError';
 
-import { uploadImg } from '../herlpers'
+import { uploadImg, postResource } from '../helpers'
 
 import './styles.css'
 
@@ -17,7 +17,7 @@ const styles = {
     }
 }
 
-const Upload = ({setIsSubmitting, setIsOpen}) => {
+const Upload = ({setIsSubmitting, setIsOpen, setIsPosted}) => {
     const [profilePic, setProfilePic] = useState("")
 
     const {
@@ -34,32 +34,9 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
         const url = await uploadImg(profilePic)
         userData["profile_pic"] = url
 
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        };
-
-        try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/users`, requestOptions)
-            
-            if(response.status === 200) {
-                const data = await response.json()
-                console.log("Usuario creado!")
-                console.log(data)
-                setIsSubmitting(false)
-            }
-
-            if(response.status === 500) {
-                console.log("No se ha podido crear el usuario")
-            }
-        }
-        catch (error) {
-            console.log(error)
-        }
+        const posted = await postResource(userData, "users")
+        setIsSubmitting(false)
+        setIsPosted(posted)
     }
     
     return (

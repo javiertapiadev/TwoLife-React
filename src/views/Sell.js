@@ -8,6 +8,7 @@ import AdForm from '../components/sell/AdForm';
 import Footer from '../components/Footer';
 
 export default function Sell() {
+    const [isPosted, setIsPosted] = useState(false)
     const [isOpen, setIsOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -15,14 +16,19 @@ export default function Sell() {
         <>
             <NavBar />
             <main style={{ paddingBottom: "30px" }}>
-                <AdForm setIsSubmitting={setIsSubmitting} setIsOpen={setIsOpen} />
+                <AdForm 
+                    setIsSubmitting={setIsSubmitting}
+                    setIsOpen={setIsOpen}
+                    setIsPosted={setIsPosted} />
             </main>
             <Footer />
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={isOpen} >
-
-                { isSubmitting ? <CircularProgress color="inherit" /> : <div>Anuncio creado!</div> }
+                {
+                    isSubmitting ? <CircularProgress color="inherit" /> : 
+                    isPosted ? <div>Anuncio creado!</div> : <div>No se pudo crear el anuncio</div>
+                }
             </Backdrop>
         </>
     )

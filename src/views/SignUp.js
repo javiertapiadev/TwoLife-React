@@ -12,7 +12,7 @@ export default function SignUp() {
     // Agregar link hacia el login
     // Hacer algo cuando se logra crear
     // Informar al usuario si introdujo algo mal
-
+    const [isPosted, setIsPosted] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
@@ -24,14 +24,14 @@ export default function SignUp() {
                 <SignUpForm 
                     setIsSubmitting={setIsSubmitting}
                     setIsOpen={setIsOpen}
-                    />
+                    setIsPosted={setIsPosted} />
             </main>
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={isOpen} >
-
-                {(isSubmitting && <CircularProgress color="inherit" />) ||
-                    <div>Usuario creado!</div>
+                {
+                    isSubmitting ? <CircularProgress color="inherit" /> : 
+                    isPosted ? <div>Usuario creado!</div> : <div>No se pudo crear el usuario</div>
                 }
             </Backdrop>
         </>
