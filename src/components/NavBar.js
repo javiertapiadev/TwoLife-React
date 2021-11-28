@@ -74,10 +74,10 @@ function NavBar() {
           </Searcher>
           <ButtonGroup disableElevation variant="contained">
             <Button>
-              <Link to="/myads">Comprar</Link>
+              <Link to="/all-videogames">Comprar</Link>
             </Button>
             <Button>
-              <Link to="/myads">Vender</Link>
+              <Link to="/sell">Vender</Link>
             </Button>
           </ButtonGroup>
           <Stack direction="row" style = {{ backgroundColor: "red" }}>
@@ -85,8 +85,8 @@ function NavBar() {
           <Grid direction="column" alignItems="center" style = {{ backgroundColor: "green" }}>
             <Stack> My Acount </Stack>
             <Stack direction="row">
-              <Stack> Login </Stack>
-              <Stack> Sign In </Stack>  
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up </Link> 
             </Stack>
           </Grid>
           </Stack>
