@@ -41,7 +41,7 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
         setIsSubmitting(true)
         setIsOpen(true)
 
-        const { profilePic, ...userData } = data
+        const { profile_pic, ...userData } = data
         const url = await uploadImg(profilePic)
         userData["profile_pic"] = url
 
@@ -80,7 +80,7 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
                         <SingleImage
                             isDisabled={false}
                             register={register}
-                            field="profilePic"
+                            field="profile_pic"
                             errors={errors}
                             image={profilePic}
                             handleFileChoosed={handleFileChoosed}
