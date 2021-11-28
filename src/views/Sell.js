@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { NavBar } from '../components/NavBar';
+import NavBar from '../components/NavBar';
 import AdForm from '../components/sell/AdForm';
 import Footer from '../components/Footer';
 
