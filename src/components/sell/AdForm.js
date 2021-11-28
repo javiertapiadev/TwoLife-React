@@ -48,18 +48,6 @@ export default function AdForm({setIsSubmitting, setIsOpen}) {
         .then(data => { setVideogameData(data) })
     }, [])
 
-    // Preview de imagen principal
-    const handleFileChoosed = (e) => {
-        const file = e.target.files[0]
-        const fileReader = new FileReader();
-
-        fileReader.readAsDataURL(file);
-
-        fileReader.onloadend = () => {
-            setMainImgFile(fileReader.result)
-        }
-    }
-
     const onSubmit = async (data) => {
         // Deshabilitar form
         setIsDisabled(!isDisabled)
@@ -93,7 +81,7 @@ export default function AdForm({setIsSubmitting, setIsOpen}) {
                             field="mainImg"
                             errors={errors}
                             image={mainImgFile}
-                            handleFileChoosed={handleFileChoosed}
+                            setImg={setMainImgFile}
                             styles={{borderRadius: "15px"}}/>
                         <MultipleImages
                             optionalImgs={optionalImgs}

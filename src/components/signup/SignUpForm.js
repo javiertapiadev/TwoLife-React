@@ -26,17 +26,6 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
         formState: { errors },
     } = useForm()
 
-    const handleFileChoosed = (e) => {
-        const file = e.target.files[0]
-        const fileReader = new FileReader();
-
-        fileReader.readAsDataURL(file);
-
-        fileReader.onloadend = () => {
-            setProfilePic(fileReader.result)
-        }
-    }
-
     const onSubmit = async (data) => {
         setIsSubmitting(true)
         setIsOpen(true)
@@ -83,7 +72,7 @@ const Upload = ({setIsSubmitting, setIsOpen}) => {
                             field="profile_pic"
                             errors={errors}
                             image={profilePic}
-                            handleFileChoosed={handleFileChoosed}
+                            setImg={setProfilePic}
                             styles={{ borderRadius: "100%" }} />
 
                         {errors.profilePic && <ValidationError message="Debes ingresar una imagen de perfil"/>}

@@ -1,8 +1,18 @@
 import ValidationError from '../common/ValidationError';
 import ImagePreview from './ImagePreview';
 
-export default function SingleImage({isDisabled, register, field, errors, image, handleFileChoosed, styles}) {
+export default function SingleImage({isDisabled, register, field, errors, image, setImg, styles}) {
     
+    const handleFileChoosed = (e) => {
+        const file = e.target.files[0]
+        const fileReader = new FileReader();
+
+        fileReader.readAsDataURL(file);
+
+        fileReader.onloadend = () => {
+            setImg(fileReader.result)
+        }
+    }
     return(
         <div style={{ marginBottom: "15px", textAlign: "center", maxWidth: "100%" }}>
             <div style={{ width: "250px", marginBottom: "16px", marginLeft: "auto", marginRight: "auto", maxWidth: "100%" }}>
