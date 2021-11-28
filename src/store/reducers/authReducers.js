@@ -10,11 +10,17 @@ const authInitState={
   onLogout:()=>{}
 }
 
+const STORAGE={
+  KEY:'twolifes'
+}
+
 function authReducer(state,action){
   switch(action.type){
     case AUTH_TYPES.LOGIN:
+      localStorage.setItem(STORAGE.KEY,state.token) 
       return {...state,...action.user}
     case AUTH_TYPES.LOGOUT:
+      localStorage.removeItem(STORAGE.KEY)
       return{...state,authInitState}
     default:
       return state    
