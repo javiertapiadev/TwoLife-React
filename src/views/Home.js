@@ -1,17 +1,19 @@
-import NavBar from '../components/layout/NavBar'
+import React from 'react';
+import NavBar from '../components/NavBar'
 import { Portada } from '../components/home/Portada'
-import Footer from '../components/layout/Footer';
-import Latests from '../components/home/Latests';
+import Latests from '../components/home/Latests'
+import Categories from '../components/home/Categories'
+import Footer from '../components/Footer';
 
 function Home() {
     return (
-        <>
-            <NavBar />
-            <Portada />
-            {/* <Populars /> */}
-            <Latests />
+        <React.Fragment>
+            <NavBar/>
+            <Portada/> 
+            <Latests/>
+            <Categories/>
             <Footer />
-        </>
+        </React.Fragment>
     );
 }
 
