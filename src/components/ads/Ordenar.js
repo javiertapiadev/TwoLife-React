@@ -1,11 +1,11 @@
-import * as React from 'react';
+import { useState } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function Ordenar() {
-  const [ordenar, setOrdenar] = React.useState('');
+  const [ordenar, setOrdenar] = useState('');
 
   const handleChange = (event) => {
     setOrdenar(event.target.value);
