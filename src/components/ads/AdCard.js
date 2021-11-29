@@ -1,8 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-=======
-import {Link} from 'react-router-dom'
->>>>>>> f82698c4fdf9b9888231d105eb1233a518cf3be9
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -22,7 +18,7 @@ const AdCard = ({gameData})=>{
             {/*<Button variant="primary">Más Información</Button>*/}
           </Card.Body>
           <Card.Footer>
-            <Link to={`/compras/${gameData.id}`}>
+            <Link to={`/ads/${gameData.id}`}>
             <Button variant="primary">Más Información</Button>
             </Link>
           </Card.Footer>

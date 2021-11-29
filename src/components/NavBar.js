@@ -47,10 +47,10 @@ export const NavBar = () => {
           </Col>
           
           <Col sm={3}>
-            <Link to="/compras">
+            <Link to="/ads">
               <Button variant="danger" size="lg">Comprar</Button>
             </Link>
-            <Link to="">
+            <Link to="/sell">
               <Button variant="outline-danger" size="lg">Vender</Button>
             </Link>
           </Col>

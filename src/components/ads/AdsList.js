@@ -1,10 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
-import AdCard from '../AdCard'
+import AdCard from './AdCard'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
 
-class Anuncios extends Component {
+class AdsList extends Component {
     state = {
         data: [
             {
@@ -68,4 +68,4 @@ class Anuncios extends Component {
     }
 }
 
-export default Anuncios;
+export default AdsList;
