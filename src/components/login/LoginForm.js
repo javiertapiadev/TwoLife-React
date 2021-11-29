@@ -5,8 +5,8 @@ import './loginForm.css'
 import { Card } from '@mui/material';
 import { Box } from '@mui/system';
 import Button from '@restart/ui/esm/Button';
-
-
+import { authContext } from '../../store/contexts/authContext';
+import { AUTH_TYPES } from '../../store/actions/authActions';
 
 
 
@@ -18,27 +18,34 @@ function LoginForm(){
     formState: { errors },
   } = useForm()
 
-const {authState,dispatch}=useContext(authContext)
+const authState=useContext(authContext)
 
-async function onLogin(data){
- const response = await fetch(`${process.env.REACT_API_API_URL}/login}`,
-   {
-     method:'POST',
-     body:data
-   }
- )
- try{
-   const data = await response.json()
-
-   return data
- }catch(error){
-   console.log(error)
- }
+ const onSubmit=async (data)=>{
+  console.log('login ',data)
+  const response = await fetch(`${process.env.REACT_APP_API_URL}login`,
+    {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }
+  )
+  try{
+    const data = await response.json()
+    console.log('register ',data)
+    authState.onLogin(data)
+    console.log('authcontext ',authState.username)
+    
+  }catch(error){
+    console.log(error)
+  }
 
 }
 
   return (
-    <form onSubmit={handleSubmit(onLogin)} sx={{width:'100vw'}} >
+    <form onSubmit={handleSubmit(onSubmit)} sx={{width:'100vw'}} >
       <div className='card-form' /* sx={{ display: 'flex',flexDirection:'column' , padding:'10px', width:'90vw', height:'70vh',justifyContent:'center'}} */>
         <Box>
 
@@ -66,7 +73,7 @@ async function onLogin(data){
           {/*  {errors.password && <ValidationError message="Debes ingresar una contraseña" />} */}
         </Box>
         <Box sx={{display:'flex', flexDirection:'column', margin:'10px'}}>
-            <Button sx={{width:'100%',color: "white", fontWeight: "bold" }}>Login</Button>
+            <Button type='onSubmit' sx={{width:'100%',color: "white", fontWeight: "bold" }}>Login</Button>
             {/* <p style={{ marginTop: "10px", color: "#AAA" }}>¿Ya tienes una cuenta? <span style={{ color: "white" }}>Inicia sesión</span></p> */}
         </Box>
       </div> 
