@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import ImageList from '@mui/material/ImageList';
 
-import ImageItem from './ImageItem';
-import LimitWarning from './LimitWarning';
+import ImageItem from '../sell/ImageItem';
+import LimitWarning from '../sell/LimitWarning';
 
 export default function MultipleImages({optionalImgs, setOptionalImgs, isDisabled}) {
     const [isOverLimit, setIsOverLimit] = useState(false);
