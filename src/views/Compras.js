@@ -1,5 +1,6 @@
 import { Component} from "react";
 import  NavBar from "../components/NavBar";
+import NavBar from "../components/layout/NavBar";
 import Anuncios from "../components/compras/Anuncios";
 import Filtros from "../components/compras/Filtros";
 import Ordenar from "../components/compras/Ordenar";

@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { ReactComponent as PinkBlur } from '../components/signup/pink-blur.svg'
-import { ReactComponent as BlueBlur } from '../components/signup/blue-blur.svg'
+import { ReactComponent as PinkBlur } from '../assets/pink-blur.svg'
+import { ReactComponent as BlueBlur } from '../assets/blue-blur.svg'
 
 import SignUpForm from '../components/signup/SignUpForm';
 

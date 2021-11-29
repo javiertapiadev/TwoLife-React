@@ -3,9 +3,9 @@ import { useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import NavBar from '../components/NavBar';
+import NavBar from '../components/layout/NavBar';
 import AdForm from '../components/sell/AdForm';
-import Footer from '../components/Footer';
+import Footer from '../components/layout/Footer';
 
 export default function Sell() {
     const [isPosted, setIsPosted] = useState(false)

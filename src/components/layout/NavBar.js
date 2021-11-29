@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../images/logo.png';
 import styled from 'styled-components';
-import { AppBar, Toolbar, Menu, MenuItem, 
-  InputBase, Stack, ButtonGroup, Button, Grid } from '@mui/material/';
-import { AccountCircle, Notifications } from '@mui/icons-material/';
+import { AccountCircle, Notifications,  } from '@mui/icons-material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SearchIcon from '@mui/icons-material/Search';
+import { 
+  AppBar,
+  Toolbar,
+  Menu,
+  MenuItem, 
+  InputBase,
+  Stack,
+  ButtonGroup,
+  Button,
+  Grid } from '@mui/material/';
+import logo from '../../assets/logo.png';
 
 const Logo = styled.img`
   width: 8vw;
