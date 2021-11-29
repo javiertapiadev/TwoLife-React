@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grid, Stack, AppBar, Link, Typography, 
-    Card, CardMedia, CardContent } from '@mui/material/';
-import styled from 'styled-components';
-import NavBar from '../NavBar'
-import Footer from '../Footer'
+import { Typography, Card, CardMedia, CardContent, Grid } from '@mui/material/';
 
 const img = "https://m.media-amazon.com/images/I/71vF5KVcvqS._AC_SY500_.jpg";
 const games = "https://twolifes.herokuapp.com/v1/videogames";
@@ -22,13 +18,8 @@ function Populars(){
         setVideogames(jsonData);
     };
 
-    return (
-        <>
-            <NavBar/>
-                <Container>
-                    <h1>All Videogames</h1>
-                </Container>
-                <Container>
+  return (
+    <>
         <Typography
           color="textPrimary"
           gutterBottom
@@ -50,16 +41,14 @@ function Populars(){
                   </Typography>
                 </CardContent>
                 <CardMedia>
-                    <img src={img} alt=""/>
-                </CardMedia>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-            <Footer/>
-        </>
-    )
+                  <img src={img} alt=""/>
+              </CardMedia>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </>
+  )
 }
 
 export default Populars;

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button, Card, CardMedia, CardContent, Typography, 
   CardActions, Chip } 
 from '@mui/material/';
 import Carousel from "react-elastic-carousel";
-import '../../styles/videogames.css';
 import styled from "styled-components";
 
 const MainContainer = styled.div`
@@ -19,6 +18,14 @@ const Carouselwrapper = styled.div`
   width: 100%;
 `;
 
+const categorias = [
+    {id: 1, title: 'estrategias', img: 'https://m.media-amazon.com/images/I/7129nswGWdS._AC_SY741_.jpg'},
+    {id: 2, title: 'carreras', img: 'https://m.media-amazon.com/images/I/71TU0o8tAwS._AC_SY741_.jpg'},
+    {id: 3, title: 'deportes', img: 'https://images-na.ssl-images-amazon.com/images/I/71F9Tuy0oyS.__AC_SX300_SY300_QL70_ML2_.jpg'},
+    {id: 4, title: 'musical', img: 'https://m.media-amazon.com/images/I/61aV-LnV3FL._AC_SX569_.jpg'},
+    {id: 5, title: 'peleas', img: 'https://m.media-amazon.com/images/I/71YY9q62EyS._AC_SY741_.jpg'},
+];
+
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
   { width: 550, itemsToShow: 2, itemsToScroll: 2 },
@@ -26,63 +33,45 @@ const breakPoints = [
   { width: 1200, itemsToShow: 4 }
 ];
 
-const games = "https://twolifes.herokuapp.com/v1/videogames";
+function Categories(){
 
-const imgUrl = "https://m.media-amazon.com/images/I/71vF5KVcvqS._AC_SY500_.jpg"
-
-function Latests(){
-
-  const [videogames, setVideogames] = useState([]);
-
-  useEffect( () => {
-    getVideogames();
-  }, []);
-
-  const getVideogames = async () => {
-    const response = await fetch(games);
-    const jsonData = await response.json();
-    setVideogames(jsonData);
-  };
 
   return (
     <React.Fragment>
       <MainContainer>
         <Typography gutterBottom variant="h3" component="div">
-          Los videojuegos mas nuevos
+          Categorias de videojuegos
         </Typography>
         <Carouselwrapper>
           <Carousel breakPoints={breakPoints}>
-            { videogames.map (( videogame ) => (
-              <Card key={videogame._id} sx={{ }} style={{  }}>
+            { categorias.map (( categoria ) => (
+              <Card key={categoria.id} sx={{ }} style={{  }}>
                 <Chip color="primary" label="Nuevo"/>
                 <CardMedia
                   component="img"
-                  alt="green iguana"
+                  alt="categoria"
                   height="200"
                   width="300" 
-                  image={imgUrl}
+                  image={categoria.img}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div">
-                    {videogame.name}
+                    {categoria.id}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    $200
+                    {categoria.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {videogame.synopsis}
-                  </Typography>
-                  </CardContent>
-                    <CardActions>
-                      <Button variant="contained" color="success" size="large">Ver videojuego</Button>
-                    </CardActions>
+                </CardContent>
+                <CardActions>
+                  <Button variant="contained" color="secondary" size="large">Ver Categoria</Button>
+                </CardActions>
               </Card>
             ))}
-          </Carousel>
-        </Carouselwrapper>
-      </MainContainer>
+            </Carousel>
+            </Carouselwrapper>
+        </MainContainer>
     </React.Fragment>
   );
 }
 
-export default Latests;
+export default Categories;
