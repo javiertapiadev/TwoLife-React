@@ -17,10 +17,8 @@ const STORAGE={
 function authReducer(state,action){
   switch(action.type){
     case AUTH_TYPES.LOGIN:
-      localStorage.setItem(STORAGE.KEY,action.user.token) 
-      console.log('state ',state)
-      console.log('new user ',action.user)
-      return {...state,...action.user}
+      localStorage.setItem(STORAGE.KEY,action.payload.token) 
+      return {...state,...action.payload}
     case AUTH_TYPES.LOGOUT:
       localStorage.removeItem(STORAGE.KEY)
       return{...state,authInitState}
