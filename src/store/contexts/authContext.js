@@ -7,8 +7,8 @@ const authContext=createContext(authInitState)
 
 function AuthProvider({children}){
   const [authState, dispatch] = useReducer(authReducer, authContext)
-  const loginHandler=(user)=>{
-    dispatch({type:AUTH_TYPES.LOGIN,user})
+  const loginHandler=(payload)=>{
+    dispatch({type:AUTH_TYPES.LOGIN,payload})
   }
   
   const logoutHandler=()=>{
