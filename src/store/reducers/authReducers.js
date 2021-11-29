@@ -1,7 +1,7 @@
 import { AUTH_TYPES } from "../actions/authActions"
 
 const authInitState={
-  id='',
+  id:'',
   username:'',
   email:'',
   token:'',
@@ -17,13 +17,15 @@ const STORAGE={
 function authReducer(state,action){
   switch(action.type){
     case AUTH_TYPES.LOGIN:
-      localStorage.setItem(STORAGE.KEY,state.token) 
+      localStorage.setItem(STORAGE.KEY,action.user.token) 
+      console.log('state ',state)
+      console.log('new user ',action.user)
       return {...state,...action.user}
     case AUTH_TYPES.LOGOUT:
       localStorage.removeItem(STORAGE.KEY)
       return{...state,authInitState}
     default:
-      return state    
+      return state
   }
 
 }
