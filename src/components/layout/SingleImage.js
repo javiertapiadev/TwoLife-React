@@ -1,5 +1,6 @@
 import ValidationError from '../common/ValidationError';
 import ImagePreview from './ImagePreview';
+import './styles.css'
 
 export default function SingleImage({isDisabled, register, field, errors, image, setImg, styles}) {
     
@@ -13,9 +14,10 @@ export default function SingleImage({isDisabled, register, field, errors, image,
             setImg(fileReader.result)
         }
     }
+    
     return(
-        <div style={{ marginBottom: "15px", textAlign: "center", maxWidth: "100%" }}>
-            <div style={{ width: "250px", marginBottom: "16px", marginLeft: "auto", marginRight: "auto", maxWidth: "100%" }}>
+        <div className="single-image">
+            <div className="imgprev-container">
                 <ImagePreview src={image} styles={{...styles}}/>
             </div>
 

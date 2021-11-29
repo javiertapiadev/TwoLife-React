@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Container, Grid, Stack, AppBar, Link, Typography, 
     Card, CardMedia, CardContent } from '@mui/material/';
 import styled from 'styled-components';
-import NavBar from '../NavBar'
-import Footer from '../Footer'
+import NavBar from '../layout/NavBar'
+import Footer from '../layout/Footer'
 
 const img = "https://m.media-amazon.com/images/I/71vF5KVcvqS._AC_SY500_.jpg";
 const games = "https://twolifes.herokuapp.com/v1/videogames";
