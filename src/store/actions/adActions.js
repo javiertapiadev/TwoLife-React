@@ -1,0 +1,7 @@
+const AD_TYPES={
+  CREATE:'CREATE_AD',
+  UPDATE:'UPDATE_AD',
+  DELETE:'DELETE_AD'
+}
+
+export {AD_TYPES}
