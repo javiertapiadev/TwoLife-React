@@ -1,6 +1,6 @@
+import React from 'react';
 import { Component } from 'react';
 import AdCard from '../AdCard'
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
 
@@ -58,7 +58,8 @@ class Anuncios extends Component {
                 <Container className="mb-5" /*"bg-primary"*/ style={{ width: '90%' }}>
                     <Row xs="auto" md="auto" lg="auto" className="g-5">
                         {this.state.data.map(data => (
-                            <AdCard gameData={data} key={data.id} />
+                            <AdCard gameData={data} key={data.id} 
+                            {...data}/>
                         ))}
                     </Row>
                 </Container>

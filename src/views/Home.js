@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavBar } from '../components/NavBar'
 import { Portada } from '../components/home/Portada'
 import Footer from '../components/Footer';

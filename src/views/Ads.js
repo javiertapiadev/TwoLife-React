@@ -1,3 +1,4 @@
+import React from 'react';
 import { Component } from 'react';
 import AdCard from '../components/AdCard';
 import { NavBar } from '../components/NavBar'
