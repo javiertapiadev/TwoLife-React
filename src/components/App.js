@@ -15,7 +15,6 @@ function App() {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/sell" component={Sell} />
           <Route exact path="/myrequests" component={RequestPage} />
-          <Route exact path="/" component={Home} />
           <Route exact path="/ads" component={Ads} />
           <Route exact path="/ads/:id" component={IndividualAd} />
           {/* <Route exact path="/myads" component={} /> */}

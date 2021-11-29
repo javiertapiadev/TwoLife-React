@@ -1,4 +1,4 @@
-import { NavBar } from "../components/NavBar";
+import NavBar from "../components/layout/NavBar";
 import AdsList from "../components/ads/AdsList";
 import Filtros from "../components/ads/Filtros";
 import Ordenar from "../components/ads/Ordenar";

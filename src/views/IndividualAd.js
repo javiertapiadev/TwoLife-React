@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import axios from 'axios'
-import { NavBar } from '../components/NavBar';
-import Footer from '../components/Footer'
+import NavBar from '../components/layout/NavBar';
+import Footer from '../components/layout/Footer'
 import Ad from '../components/ads/Ad'
 
 function IndividualAd () {
