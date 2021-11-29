@@ -4,7 +4,6 @@ import { Container, Grid, Stack, AppBar, Link, Typography,
 import styled from 'styled-components';
 import NavBar from '../layout/NavBar'
 import Footer from '../layout/Footer'
-import { Typography, Card, CardMedia, CardContent, Grid } from '@mui/material/';
 
 const img = "https://m.media-amazon.com/images/I/71vF5KVcvqS._AC_SY500_.jpg";
 const games = "https://twolifes.herokuapp.com/v1/videogames";
