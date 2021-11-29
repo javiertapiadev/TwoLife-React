@@ -82,7 +82,7 @@ function NavBar() {
           </Searcher>
           <ButtonGroup disableElevation variant="contained">
             <Button>
-              <Link to="/all-videogames">Comprar</Link>
+              <Link to="/ads">Comprar</Link>
             </Button>
             <Button>
               <Link to="/sell">Vender</Link>
