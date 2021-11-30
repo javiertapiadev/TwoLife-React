@@ -45,20 +45,22 @@ export default function SignUp() {
 
     return (
         <>
-            <main style={styles.main}>
+            <div style={styles.main}>
                 <PinkBlur style={styles.pink} />
                 <BlueBlur style={styles.blue} />
-                <SignUpForm 
-                    setIsSubmitting={setIsSubmitting}
-                    setIsOpen={setIsOpen}
-                    setIsPosted={setIsPosted} />
-            </main>
+                <main>
+                    <SignUpForm
+                        setIsSubmitting={setIsSubmitting}
+                        setIsOpen={setIsOpen}
+                        setIsPosted={setIsPosted} />
+                </main>
+            </div>
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={isOpen} >
                 {
-                    isSubmitting ? <CircularProgress color="inherit" /> : 
-                    isPosted ? <div>Usuario creado!</div> : <div>No se pudo crear el usuario</div>
+                    isSubmitting ? <CircularProgress color="inherit" /> :
+                        isPosted ? <div>Usuario creado!</div> : <div>No se pudo crear el usuario</div>
                 }
             </Backdrop>
         </>

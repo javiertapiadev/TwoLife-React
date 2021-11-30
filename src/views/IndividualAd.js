@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import axios from 'axios'
-import NavBar from '../components/layout/NavBar';
-import Footer from '../components/layout/Footer'
 import Ad from '../components/ads/Ad'
 
 function IndividualAd () {
@@ -31,11 +29,9 @@ function IndividualAd () {
     }, [])
 
     return (
-        <>
-            <NavBar />
-            {flag && <Ad ad={ad}/>}      
-            <Footer/>      
-        </>
+        <main>
+            {flag && <Ad ad={ad}/>}
+        </main>
     )
 }
 
