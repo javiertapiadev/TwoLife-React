@@ -1,4 +1,3 @@
-import NavBar from "../components/layout/NavBar";
 import AdsList from "../components/ads/AdsList";
 import Filtros from "../components/ads/Filtros";
 import Ordenar from "../components/ads/Ordenar";
@@ -14,7 +13,6 @@ const Item = styled(Paper)(({ theme }) => ({
 function Ads() {
     return (
       <>
-        <NavBar />
         <Grid container spacing={2}>
           <Grid item xs={3} md={3}>
             <Ordenar/>
@@ -30,7 +28,9 @@ function Ads() {
               <Filtros/>
           </Grid>
           <Grid item xs={9}>
-            <AdsList />
+            <main>
+              <AdsList />
+            </main>
           </Grid>
         </Grid>
       </>
