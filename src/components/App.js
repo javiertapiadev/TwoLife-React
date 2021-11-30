@@ -6,7 +6,8 @@ import {
   Ads,
   Sell,
   SignUp,
-  IndividualAd
+  IndividualAd,
+  Login
 } from '../views';
 
 const WrappedRoutes = () => {
@@ -28,6 +29,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/login" component={Login} />
           <Route component={WrappedRoutes}/>
         </Switch>
       </Router>
