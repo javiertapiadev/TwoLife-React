@@ -4,11 +4,11 @@ import Categories from '../components/home/Categories'
 
 function Home() {
     return (
-        <>
+        <main>
             <Portada/> 
             <Latests/>
             <Categories/>
-        </>
+        </main>
     );
 }
 
