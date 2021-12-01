@@ -45,12 +45,12 @@ const authState=useContext(authContext)
 }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} sx={{width:'100vw'}} >
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className='card-form' /* sx={{ display: 'flex',flexDirection:'column' , padding:'10px', width:'90vw', height:'70vh',justifyContent:'center'}} */>
         <Box>
 
         </Box>
-        <Box sx={{display: 'flex', flexDirection:'column',gap:5, height:'70vh'}}>
+        <Box sx={{display: 'flex', flexDirection:'column',gap:3}}>
           <TextField
             type="email"
             label="Email"
@@ -71,11 +71,12 @@ const authState=useContext(authContext)
             InputProps={{className:'input-text-color'}}
             {...register("password", { required: true })} />
           {/*  {errors.password && <ValidationError message="Debes ingresar una contraseña" />} */}
-        </Box>
-        <Box sx={{display:'flex', flexDirection:'column', margin:'10px'}}>
+          <Box sx={{display:'flex', flexDirection:'column', margin:'10px'}}>
             <Button type='onSubmit' sx={{width:'100%',color: "white", fontWeight: "bold" }}>Login</Button>
             {/* <p style={{ marginTop: "10px", color: "#AAA" }}>¿Ya tienes una cuenta? <span style={{ color: "white" }}>Inicia sesión</span></p> */}
         </Box>
+        </Box>
+       
       </div> 
     </form>
   )
