@@ -4,6 +4,7 @@ import Ads from './Ads';
 import Sell from './Sell';
 import SignUp from './SignUp';
 import IndividualAd from './IndividualAd';
+import Login from './Login';
 
 export {
     Home,
@@ -11,5 +12,6 @@ export {
     Ads,
     Sell,
     SignUp,
-    IndividualAd
+    IndividualAd,
+    Login
 }
