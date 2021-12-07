@@ -1,0 +1,6 @@
+const AUTH_TYPES={
+  LOGIN:'LOGIN',
+  LOGOUT:'LOGOUT'
+}
+
+export {AUTH_TYPES}
