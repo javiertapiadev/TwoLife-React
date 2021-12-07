@@ -13,12 +13,16 @@ import {
  
 } from './views';
 import {AuthProvider} from './store/contexts/authContext'
+import {AdProvider} from './store/contexts/adContext'
+import {RequestProvider} from './store/contexts/adContext'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
+    <RequestProvider>
+    <AdProvider>
       <Router>
         <Routes>
           <Route  path="/" element={<App/>} >
@@ -32,6 +36,8 @@ ReactDOM.render(
          {/*  <Route path="/login" element={<Login/>} /> */}
         </Routes>  
       </Router>
+    </AdProvider> 
+    </RequestProvider> 
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
