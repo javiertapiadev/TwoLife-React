@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Grid from '@mui/material/Grid';
 
 import SingleImage from '../common/SingleImage';
-import MultipleImages from '../common/MultipleImages';
+import PickImages from '../common/PickImages';
 import AdFormInputs from './AdFormInputs';
 import SubmitButton from '../common/SubmitButton';
 
@@ -74,6 +74,7 @@ export default function AdForm({setIsSubmitting, setIsOpen, setIsPosted}) {
                     className="imgs-data">
                         <SingleImage
                             image={mainImgFile}
+                            styles={{borderRadius: "15px"}}
                             form={{
                                 isDisabled,
                                 register,
@@ -81,10 +82,9 @@ export default function AdForm({setIsSubmitting, setIsOpen, setIsPosted}) {
                                 errors,
                                 setImg: setMainImgFile
                             }}
-                            styles={{borderRadius: "15px"}}
                         />
-                        <MultipleImages
-                            optionalImgs={optionalImgs}
+                        <PickImages
+                            images={optionalImgs}
                             setOptionalImgs={setOptionalImgs}
                             isDisabled={isDisabled} />
                 </Grid>

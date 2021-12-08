@@ -1,5 +1,6 @@
 import { Row, Col, ListGroup, Image, Button } from 'react-bootstrap'
 import SingleImage from '../common/SingleImage'
+import MultipleImages from '../common/MultipleImages'
 
 function Ad({ad}) {
     return (
@@ -7,7 +8,6 @@ function Ad({ad}) {
             <div className="container">
                 <Row className="mt-5">
                     <Col sm={4}>
-                        {/* <Image src={ad.mainImgURL} alt="imagen principal" rounded /> */}
                         <SingleImage image={ad.mainImgURL} styles={{borderRadius: "15px"}}/>
                     </Col>
                     <Col>
@@ -38,22 +38,7 @@ function Ad({ad}) {
 
                 <Row className="container mt-5">
                     <Col>
-                        <Row className="mt-1">
-                            <Col className="mt-1">
-                                <Image src="https://picsum.photos/100" alt="imagen principal" rounded />
-                            </Col>
-                            <Col className="mt-1">
-                                <Image src="https://picsum.photos/100" alt="imagen principal" rounded />
-                            </Col>
-                        </Row>
-                        <Row className="mt-1">
-                            <Col className="mt-1">
-                                <Image src="https://picsum.photos/100" alt="imagen principal" rounded />
-                            </Col>
-                            <Col className="mt-1">
-                                <Image src="https://picsum.photos/100" alt="imagen principal" rounded />
-                            </Col>
-                        </Row>
+                        <MultipleImages images={ad.optionalImgsURL}/>
                     </Col>
                     <Col>
                         <p>${ad.price}</p>
