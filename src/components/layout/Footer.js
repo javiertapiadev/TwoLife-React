@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
 import { Grid, Stack, AppBar, Link } from '@mui/material/';
-import './styles.css';
 
 const Linkers = styled(Link)`
   color: black;

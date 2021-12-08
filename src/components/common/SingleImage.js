@@ -1,4 +1,4 @@
-import ValidationError from '../common/ValidationError';
+import ValidationError from './ValidationError';
 import ImagePreview from './ImagePreview';
 import './styles.css'
 

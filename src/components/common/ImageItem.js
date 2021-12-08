@@ -2,7 +2,7 @@ import Fade from '@mui/material/Fade';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import ImagePreview from '../layout/ImagePreview';
+import ImagePreview from './ImagePreview';
 
 export default function ImageItem({optionalImgs, index, handleDeleteImg}) {
     return (
