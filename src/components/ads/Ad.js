@@ -1,4 +1,5 @@
 import { Row, Col, ListGroup, Image, Button } from 'react-bootstrap'
+import SingleImage from '../common/SingleImage'
 
 function Ad({ad}) {
     return (
@@ -6,22 +7,23 @@ function Ad({ad}) {
             <div className="container">
                 <Row className="mt-5">
                     <Col sm={4}>
-                        <Image src={ad.mainImgURL} alt="imagen principal" rounded />
+                        {/* <Image src={ad.mainImgURL} alt="imagen principal" rounded /> */}
+                        <SingleImage image={ad.mainImgURL} styles={{borderRadius: "15px"}}/>
                     </Col>
                     <Col>
-                        <Row><h1>{ad.videogame.name}</h1></Row>
+                        <Row><h1>{ad.idVideogame.name}</h1></Row>
                         <ListGroup horizontal>
                             <ListGroup.Item variant="primary">
-                                Lanzamiento: {ad.videogame.releaseDate.split('T')[0]}
+                                Lanzamiento: {ad.idVideogame.releaseDate.split('T')[0]}
                             </ListGroup.Item>
-                            <ListGroup.Item variant="primary">Categoría edad: {ad.videogame.ageCategory}</ListGroup.Item>
+                            <ListGroup.Item variant="primary">Categoría edad: {ad.idVideogame.ageCategory}</ListGroup.Item>
                             <ListGroup.Item variant="primary">
-                                Géneros: {ad.videogame.genre.join(', ')}
+                                Géneros: {ad.idVideogame.genre.join(', ')}
                             </ListGroup.Item>
-                            <ListGroup.Item variant="primary">Consola: {ad.platform}</ListGroup.Item>
+                            <ListGroup.Item variant="primary">Consola: {ad.idPlatform.platform}</ListGroup.Item>
                             <ListGroup.Item variant="primary">Condición: {ad.condition}</ListGroup.Item>
                             <ListGroup.Item variant="primary">
-                                Anunciante: {`${ad.advertiser.firstname} ${ad.advertiser.lastname}`}
+                                Anunciante: {`${ad.idAdvertiser.firstname} ${ad.idAdvertiser.lastname}`}
                             </ListGroup.Item>
                         </ListGroup>
                         <div>
