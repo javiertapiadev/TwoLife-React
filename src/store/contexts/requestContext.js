@@ -1,6 +1,6 @@
 import {createContext,useReducer} from 'react'
-import { REQUEST_TYPES } from '../actions/authActions'
-import {requestInitState, requestReducer } from '../reducers/authReducers'
+import { REQUEST_TYPES } from '../actions/requestActions'
+import {requestInitState, requestReducer } from '../reducers/requestReducers'
 
 
 const requestContext=createContext(requestInitState)
@@ -13,7 +13,7 @@ function RequestProvider({children}){
   const updateHandler=(payload)=>{
     dispatch({type:REQUEST_TYPES.DELETE,payload})
   }
-  const deleteHandler=()=>{
+  const deleteHandler=(payload)=>{
     dispatch({type:REQUEST_TYPES.UPDATE,payload})
   }
   const request={
