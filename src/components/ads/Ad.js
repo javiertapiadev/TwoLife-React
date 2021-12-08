@@ -1,5 +1,37 @@
-import { Row, Col, ListGroup, Button } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import {SingleImage, MultipleImages} from '../common'
+import styled from 'styled-components'
+
+const DataContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+`
+
+const DataItem = styled.p`
+    width: max-content;
+    max-width: max-content;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #5271FF;
+    color: white;
+
+    @media (min-width: 1000px) {
+    flex-basis: 50%;
+    }
+` 
+const DataName = styled.span`
+    font-weight: bold;
+`
 
 function Ad({ad}) {
     return (
@@ -10,21 +42,33 @@ function Ad({ad}) {
                         <SingleImage image={ad.mainImgURL} styles={{borderRadius: "15px"}}/>
                     </Col>
                     <Col>
-                        <Row><h1>{ad.idVideogame.name}</h1></Row>
-                        <ListGroup horizontal>
-                            <ListGroup.Item variant="primary">
-                                Lanzamiento: {ad.idVideogame.releaseDate.split('T')[0]}
-                            </ListGroup.Item>
-                            <ListGroup.Item variant="primary">Categoría edad: {ad.idVideogame.ageCategory}</ListGroup.Item>
-                            <ListGroup.Item variant="primary">
-                                Géneros: {ad.idVideogame.genre.join(', ')}
-                            </ListGroup.Item>
-                            <ListGroup.Item variant="primary">Consola: {ad.idPlatform.platform}</ListGroup.Item>
-                            <ListGroup.Item variant="primary">Condición: {ad.condition}</ListGroup.Item>
-                            <ListGroup.Item variant="primary">
-                                Anunciante: {`${ad.idAdvertiser.firstname} ${ad.idAdvertiser.lastname}`}
-                            </ListGroup.Item>
-                        </ListGroup>
+                        <Row> <h1>{ad.idVideogame.name}</h1> </Row>
+                        <DataContainer>
+                            <DataItem>
+                                <DataName>Lanzamiento: </DataName>
+                                {ad.idVideogame.releaseDate.split('T')[0]}
+                            </DataItem>
+                            <DataItem>
+                                <DataName>Categoría: </DataName>
+                                {ad.idVideogame.ageCategory}
+                            </DataItem>
+                            <DataItem>
+                                <DataName>Géneros: </DataName>
+                                {ad.idVideogame.genre.join(', ')}
+                            </DataItem>
+                            <DataItem>
+                                <DataName>Consola: </DataName>
+                                {ad.idPlatform.platform}
+                            </DataItem>
+                            <DataItem>
+                                <DataName>Condición: </DataName>
+                                {ad.condition}
+                            </DataItem>
+                            <DataItem>
+                                <DataName>Anunciante: </DataName>
+                                {`${ad.idAdvertiser.firstname} ${ad.idAdvertiser.lastname}`}
+                            </DataItem>
+                        </DataContainer>
                         <div>
                             <div>
                                 <h2>Description</h2>
