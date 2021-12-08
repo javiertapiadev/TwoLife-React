@@ -3,10 +3,8 @@ import { useForm } from "react-hook-form";
 
 import Grid from '@mui/material/Grid';
 
-import SingleImage from '../common/SingleImage';
-import PickImages from '../common/PickImages';
+import { SingleImage, PickImages, SubmitButton } from '../common';
 import AdFormInputs from './AdFormInputs';
-import SubmitButton from '../common/SubmitButton';
 
 import { uploadImg, createVideogame, postResource } from '../helpers';
 

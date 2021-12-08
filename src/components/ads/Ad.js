@@ -1,6 +1,5 @@
-import { Row, Col, ListGroup, Image, Button } from 'react-bootstrap'
-import SingleImage from '../common/SingleImage'
-import MultipleImages from '../common/MultipleImages'
+import { Row, Col, ListGroup, Button } from 'react-bootstrap'
+import {SingleImage, MultipleImages} from '../common'
 
 function Ad({ad}) {
     return (

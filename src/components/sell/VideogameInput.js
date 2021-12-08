@@ -2,7 +2,7 @@ import { createFilterOptions } from '@mui/material/Autocomplete';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
-import ValidationError from '../common/ValidationError'
+import { ValidationError } from '../common';
 const filter = createFilterOptions();
 
 export default function VideogameInput({isDisabled, register, errors, videogameData, setIdVideogame, setVideogameTitle}) {
