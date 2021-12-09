@@ -1,9 +1,24 @@
-import { Row, Col, Button } from 'react-bootstrap'
-import {SingleImage, MultipleImages} from '../common'
 import styled from 'styled-components'
+import { SingleImage, MultipleImages } from '../common'
+import './styles.css'
+
+const Container = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: 1000px) {
+        max-height: 100vh;
+    }
+`
 
 const DataContainer = styled.div`
     width: 100%;
+    padding-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -26,72 +41,80 @@ const DataItem = styled.p`
     color: white;
 
     @media (min-width: 1000px) {
-    flex-basis: 50%;
+        flex-basis: 50%;
     }
 ` 
+
 const DataName = styled.span`
     font-weight: bold;
 `
 
+const Price = styled.p`
+    font-weight: bold;
+    font-size: 60px;
+    color: #5271FF;
+`
+
 function Ad({ad}) {
     return (
-        <>
-            <div className="container">
-                <Row className="mt-5">
-                    <Col sm={4}>
-                        <SingleImage image={ad.mainImgURL} styles={{borderRadius: "15px"}}/>
-                    </Col>
-                    <Col>
-                        <Row> <h1>{ad.idVideogame.name}</h1> </Row>
-                        <DataContainer>
-                            <DataItem>
-                                <DataName>Lanzamiento: </DataName>
-                                {ad.idVideogame.releaseDate.split('T')[0]}
-                            </DataItem>
-                            <DataItem>
-                                <DataName>Categoría: </DataName>
-                                {ad.idVideogame.ageCategory}
-                            </DataItem>
-                            <DataItem>
-                                <DataName>Géneros: </DataName>
-                                {ad.idVideogame.genre.join(', ')}
-                            </DataItem>
-                            <DataItem>
-                                <DataName>Consola: </DataName>
-                                {ad.idPlatform.platform}
-                            </DataItem>
-                            <DataItem>
-                                <DataName>Condición: </DataName>
-                                {ad.condition}
-                            </DataItem>
-                            <DataItem>
-                                <DataName>Anunciante: </DataName>
-                                {`${ad.idAdvertiser.firstname} ${ad.idAdvertiser.lastname}`}
-                            </DataItem>
-                        </DataContainer>
-                        <div>
-                            <div>
-                                <h2>Description</h2>
-                                <small>Publicado el {ad.createdAt.split('T')[0]}</small>
-                            </div>
-                            <p>{ad.description}</p>
-                        </div>
-                    </Col>
-                </Row>
+        <main style={{marginTop: "20px", marginBottom: "20px"}}>
+            <Container>
+                <div className="main-img">
+                    <SingleImage image={ad.mainImgURL} styles={{borderRadius: "15px"}}/>
+                </div>
 
-                <Row className="container mt-5">
-                    <Col>
-                        <MultipleImages images={ad.optionalImgsURL}/>
-                    </Col>
-                    <Col>
-                        <p>${ad.price}</p>
-                    </Col>
-                    <Col>
-                        <Button variant="primary" size="lg">Solicitar Juego</Button>
-                    </Col>
-                </Row>
-            </div>
-        </>
+                <div className="extra-imgs">
+                    <MultipleImages images={ad.optionalImgsURL}/>
+                </div>
+
+                <div className="vdgm-data">
+                    <h1>{ad.idVideogame.name}</h1>
+                    <DataContainer>
+                        <DataItem>
+                            <DataName>Lanzamiento: </DataName>
+                            {ad.idVideogame.releaseDate.split('T')[0]}
+                        </DataItem>
+                        <DataItem>
+                            <DataName>Categoría: </DataName>
+                            {ad.idVideogame.ageCategory}
+                        </DataItem>
+                        <DataItem>
+                            <DataName>Géneros: </DataName>
+                            {ad.idVideogame.genre.join(', ')}
+                        </DataItem>
+                        <DataItem>
+                            <DataName>Consola: </DataName>
+                            {ad.idPlatform.platform}
+                        </DataItem>
+                        <DataItem>
+                            <DataName>Condición: </DataName>
+                            {ad.condition}
+                        </DataItem>
+                        <DataItem>
+                            <DataName>Anunciante: </DataName>
+                            {`${ad.idAdvertiser.firstname} ${ad.idAdvertiser.lastname}`}
+                        </DataItem>
+                    </DataContainer>
+                </div>
+                
+                <div className="description">
+                    <div className="header">
+                        <h2 style={{fontWeight: "bold", marginRight: "7px"}}>
+                            Descripción
+                        </h2>
+                        <small style={{color: "#888"}}>
+                            Publicado el {ad.createdAt.split('T')[0]}
+                        </small>
+                    </div>
+                    <p>{ad.description}</p>
+                </div>
+
+                <div className="price">
+                    <Price>${ad.price}</Price>
+                    <button className="buy-btn">Solicitar juego</button>
+                </div>
+            </Container>
+        </main>
     )
 }
 
