@@ -1,7 +1,7 @@
 import ImageList from '@mui/material/ImageList';
 import ImageItem from './ImageItem';
 
-const MultipleImages = ({images, isForm}) => {
+const MultipleImages = ({images, isForm, isSquare, cols}) => {
     let limit;
     const imageItems = []
 
@@ -15,10 +15,25 @@ const MultipleImages = ({images, isForm}) => {
         imageItems.push( <ImageItem image={image} index={i} isForm={isForm} /> )
     }
 
+    const square = {
+        width: 250, 
+        height: 250,
+    }
+
+    const custom = {
+        width: images.length > cols ? 125 * cols : 125 * images.length,
+        height: images.length > cols ? 250 : 125
+    }
+
+    const styles = isSquare ? 
+        {...square, marginLeft: "auto", marginRight: "auto"} :
+        {...custom, marginLeft: "auto", marginRight: "auto"}
+
+    console.log(styles)
     return(
         <ImageList 
-            sx={{ width: 250, height: 250, marginLeft: "auto", marginRight: "auto" }}
-            cols={2}
+            sx={styles}
+            cols={images.length < cols ? images.length : cols}
             rowHeight={125}>
                 {
                     imageItems.map((imageItem) => imageItem)

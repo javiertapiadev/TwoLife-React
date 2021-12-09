@@ -37,7 +37,7 @@ export default function PickImages({ images, setOptionalImgs, isDisabled}) {
 
     return (
         <div style={{ marginBottom: "15px", textAlign: "center" }}>
-            <MultipleImages images={images} isForm={{ handleDeleteImg }}/>
+            <MultipleImages images={images} isForm={{ handleDeleteImg }} isSquare/>
 
             <input
                 type="file"

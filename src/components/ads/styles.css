@@ -57,8 +57,19 @@
 }
 
 @media (min-width: 1000px) {
+
+    .large {
+        padding-top: 40px;
+    }
+
+    .large .single-img .imgprev-container{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
     .extra-imgs {
-        order: 2
+        order: 2;
+        /* min-height: 250px; */
     }
 
     .vdgm-data, .description {

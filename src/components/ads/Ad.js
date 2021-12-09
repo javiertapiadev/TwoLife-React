@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import Media from 'react-media';
+
 import { SingleImage, MultipleImages } from '../common'
 import './styles.css'
 
@@ -11,7 +13,7 @@ const Container = styled.div`
     margin-right: auto;
 
     @media (min-width: 1000px) {
-        max-height: 100vh;
+        max-height: 100vh; // 556px
     }
 `
 
@@ -55,16 +57,54 @@ const Price = styled.p`
     color: #5271FF;
 `
 
+const NoImgs = styled.div`
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & p {
+        font-style: italic;
+        color: #777;
+    }
+    
+    @media (min-width: 1000px) {
+        height: 250px;
+        width: 250px;
+    }
+`
+
 function Ad({ad}) {
     return (
-        <main style={{marginTop: "20px", marginBottom: "20px"}}>
+        <main style={{marginTop: "35px", marginBottom: "35px"}}>
             <Container>
-                <div className="main-img">
+                <div className={`main-img ${ad.optionalImgsURL.length < 3 ? "large" : ""}`}>
                     <SingleImage image={ad.mainImgURL} styles={{borderRadius: "15px"}}/>
                 </div>
 
                 <div className="extra-imgs">
-                    <MultipleImages images={ad.optionalImgsURL}/>
+                    { ad.optionalImgsURL.length > 0 ?
+                        <Media queries={{
+                            two: "(max-width: 599px) or (min-width: 1000px)",
+                            three: "(min-width: 600px) and (max-width: 756px)",
+                            four: "(min-width: 757px) and (max-width: 999px)",
+                        }} >
+                            {matches => (
+                                <>
+                                    {matches.two && 
+                                    <MultipleImages images={ad.optionalImgsURL} cols={2}/>}
+
+                                    {matches.three &&
+                                    <MultipleImages images={ad.optionalImgsURL} cols={3}/>}
+
+                                    {matches.four &&
+                                    <MultipleImages images={ad.optionalImgsURL} cols={4}/>}
+                                </>
+                            )}
+                        </Media> :
+                        <NoImgs> <p>No hay imágenes extra</p> </NoImgs>
+                    }
                 </div>
 
                 <div className="vdgm-data">
