@@ -20,9 +20,7 @@ function IndividualAd () {
 
     return (
         <>
-            <NavBar />
             {Object.keys(ad).length > 0 && <Ad ad={ad}/>}
-            <Footer/>      
         </>
     )
 }
