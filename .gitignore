@@ -106,3 +106,4 @@ dist
 env.sh
 .vscode
 reportWebVitals.js
+package-lock.json

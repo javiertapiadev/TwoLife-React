@@ -14,7 +14,7 @@ class AdsList extends Component {
 
     componentDidMount() {
         axios.get(`${process.env.REACT_APP_API_URL}/ads?populate=[videogame]`)
-            .then(response => {this.setState({ ads: response.data }); console.log(response.data)})
+            .then(response => this.setState({ ads: response.data }))
             .catch(e => console.log(e))
     }
 

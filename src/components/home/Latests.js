@@ -13,6 +13,8 @@ const MainContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  max-width: 100%;
+  background-color: "blue";
 `;
 
 const Carouselwrapper = styled.div`
@@ -26,7 +28,7 @@ const breakPoints = [
   { width: 1200, itemsToShow: 4 }
 ];
 
-const games = "https://twolifes.herokuapp.com/v1/videogames";
+const games = "https://twolifes.herokuapp.com/v1/videogames?limit=4";
 
 const imgUrl = "https://m.media-amazon.com/images/I/71vF5KVcvqS._AC_SY500_.jpg"
 
@@ -45,7 +47,6 @@ function Latests(){
   };
 
   return (
-    <React.Fragment>
       <MainContainer>
         <Typography gutterBottom variant="h3" component="div">
           Los videojuegos mas nuevos
@@ -81,7 +82,6 @@ function Latests(){
           </Carousel>
         </Carouselwrapper>
       </MainContainer>
-    </React.Fragment>
   );
 }
 

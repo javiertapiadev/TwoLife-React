@@ -11,7 +11,8 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  /* height: 100vh; */
+  background-color: "salmon";
 `;
 
 const Carouselwrapper = styled.div`
@@ -37,7 +38,6 @@ function Categories(){
 
 
   return (
-    <React.Fragment>
       <MainContainer>
         <Typography gutterBottom variant="h3" component="div">
           Categorias de videojuegos
@@ -70,7 +70,6 @@ function Categories(){
             </Carousel>
             </Carouselwrapper>
         </MainContainer>
-    </React.Fragment>
   );
 }
 
