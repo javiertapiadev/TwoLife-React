@@ -13,7 +13,7 @@ const Container = styled.div`
     margin-right: auto;
 
     @media (min-width: 1000px) {
-        max-height: 100vh; // 556px
+        max-height: 560px;
     }
 `
 
