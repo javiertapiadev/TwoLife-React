@@ -1,4 +1,4 @@
-import { Component, useState } from 'react';
+import React, { Component, useState } from 'react';
 import { Container } from "@mui/material";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -22,6 +22,13 @@ function FiltroGeneros() {
       <FormControlLabel label="Educativo" control={<Checkbox/>}/>
       <FormControlLabel label="Acción y aventura" control={<Checkbox/>}/>
       <FormControlLabel label="Terror" control={<Checkbox/>}/>
+      <div>
+          {/* <div className="checkbox">
+          <h1>{props.data.Plataforms}
+          </h1>
+          </div> */}
+      </div>
+
     </FormGroup>
   );
 }

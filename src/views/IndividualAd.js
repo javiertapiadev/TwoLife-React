@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import axios from 'axios'
 import Ad from '../components/ads/Ad'
+require('dotenv').config();
+
 
 function IndividualAd () {
     const { id } = useParams()

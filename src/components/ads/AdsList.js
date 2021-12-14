@@ -3,12 +3,14 @@ import AdCard from './AdCard'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
 import axios from 'axios';
+require('dotenv').config();
+ 
 
 class AdsList extends Component {
     constructor(props) {
         super(props)
         this.state = { 
-            ads: [] 
+            ads: [],
         }
     }
 
