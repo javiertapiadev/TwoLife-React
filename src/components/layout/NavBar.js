@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -50,17 +50,30 @@ const styles = {
 
 const LoggedOutOpts = () => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const mobileMoreAnchorElRef = useRef(mobileMoreAnchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
 
   const handleMobileMenuOpen = (event) => {
+    mobileMoreAnchorElRef.current = event.currentTarget
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
   const handleMobileMenuClose = () => {
+    mobileMoreAnchorElRef.current = null
     setMobileMoreAnchorEl(null);
   };
+
+  const handleScroll = () => {
+    if (mobileMoreAnchorElRef.current) {
+      handleMobileMenuClose()
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, [])
 
   return (
     <>
@@ -99,6 +112,7 @@ const LoggedOutOpts = () => {
 
 const LoggedInOpts = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const anchorElRef = useRef(anchorEl)
   const open = Boolean(anchorEl);
   
   const user = {
@@ -107,12 +121,24 @@ const LoggedInOpts = () => {
   }
 
   const handleClick = (event) => {
+    anchorElRef.current = event.currentTarget
     setAnchorEl(event.currentTarget);
   }
 
   const handleClose = () => {
+    anchorElRef.current = null
     setAnchorEl(null);
   }
+
+  const handleScroll = () => {
+    if (anchorElRef.current) {
+      handleClose()
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, [])
 
   return (
     <div>
@@ -165,16 +191,30 @@ const LoggedInOpts = () => {
 
 function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const isLogged = true
+  const anchorElRef = useRef(anchorEl)
+
+  const isLogged = false
 
   const handleOpenNavMenu = (event) => {
     setAnchorEl(event.currentTarget);
+    anchorElRef.current = event.currentTarget
   };
 
   const handleCloseNavMenu = () => {
     setAnchorEl(null);
+    anchorElRef.current = null
   };
+
+  const handleScroll = () => {
+    if (anchorElRef.current) {
+      handleCloseNavMenu()
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, [])
+
   return (
     <AppBar sx={{ backgroundColor: "white", position: "relative", display: "flex", justifyContent: "space-between" }}>
       <Toolbar variant="dense" sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -194,7 +234,7 @@ function NavBar() {
         {/* Pantallas chicas */}
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton
-            aria-label="account of current user"
+            aria-label="Menu"
             aria-controls="menu-appbar"
             aria-haspopup="true"
             onClick={handleOpenNavMenu}
