@@ -6,14 +6,14 @@ import {requestInitState, requestReducer } from '../reducers/authReducers'
 const requestContext=createContext(requestInitState)
 
 function RequestProvider({children}){
-  const [requestState, dispatch] = useReducer(requestReducer, requestContext)
+  const [requestState, dispatch] = useReducer(requestReducer, resquestInitState)
   const createHandler=(payload)=>{
     dispatch({type:REQUEST_TYPES.CREATE,payload})
   }
   const updateHandler=(payload)=>{
     dispatch({type:REQUEST_TYPES.DELETE,payload})
   }
-  const deleteHandler=()=>{
+  const deleteHandler=(payload)=>{
     dispatch({type:REQUEST_TYPES.UPDATE,payload})
   }
   const request={

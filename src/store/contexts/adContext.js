@@ -6,14 +6,14 @@ import {adInitState, adReducer } from '../reducers/authReducers'
 const adContext=createContext(adInitState)
 
 function AdProvider({children}){
-  const [adState, dispatch] = useReducer(adReducer, adContext)
+  const [adState, dispatch] = useReducer(adReducer, adInitState)
   const createHandler=(payload)=>{
     dispatch({type:AD_TYPES.CREATE,payload})
   }
   const updateHandler=(payload)=>{
     dispatch({type:AD_TYPES.DELETE,payload})
   }
-  const deleteHandler=()=>{
+  const deleteHandler=(payload)=>{
     dispatch({type:AD_TYPES.UPDATE,payload})
   }
   const ad={
