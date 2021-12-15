@@ -15,6 +15,7 @@ import {
 } from './views';
 import {AuthProvider} from './store/contexts/authContext'
 import {AdProvider} from './store/contexts/adContext'
+import {myAdProvider} from './store/contexts/myAdContext'
 import {RequestProvider} from './store/contexts/requestContext'
 import './styles/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,6 +26,7 @@ ReactDOM.render(
     <AuthProvider>
     <RequestProvider>
     <AdProvider>
+    <MyAdProvider>  
       <Router>
         <Routes>
           <Route  path="/" element={<App/>} >
@@ -39,6 +41,7 @@ ReactDOM.render(
           <Route path="/login" element={<Login/>} />
         </Routes>  
       </Router>
+    </MyAdProvider>  
     </AdProvider> 
     </RequestProvider> 
     </AuthProvider>
