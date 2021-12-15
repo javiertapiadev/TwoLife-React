@@ -5,8 +5,11 @@ import './loginForm.css'
 import { Box } from '@mui/system';
 import Button from '@restart/ui/esm/Button';
 import { authContext } from '../../store/contexts/authContext';
-
-function LoginForm(){ 
+import {useNavigate,useLocation} from 'react-router-dom'
+function LoginForm(){
+  const location= useLocation()
+  const navigate= useNavigate() 
+  let from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
@@ -29,7 +32,7 @@ function LoginForm(){
       console.log('register ',data) 
       if(data){
         authState.onLogin(data)
-        
+        navigate(from, { replace: true });
         console.log('authcontext ',authState.username)
       } 
     }catch(error){
