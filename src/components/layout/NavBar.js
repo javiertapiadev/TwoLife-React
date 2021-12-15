@@ -147,7 +147,7 @@ const LoggedInOpts = () => {
         }}
         disableScrollLock={ true }>
         <MenuItem onClick={handleClose}>
-          <Link to="/me" style={styles.links}>Mi cuenta</Link>
+          <Link to="/account" style={styles.links}>Mi cuenta</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <Link to="/myrequests" style={styles.links}>Mis solicitudes</Link>
