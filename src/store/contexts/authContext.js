@@ -6,7 +6,7 @@ import {authInitState, authReducer } from '../reducers/authReducers'
 const authContext=createContext(authInitState)
 
 function AuthProvider({children}){
-  const [authState, dispatch] = useReducer(authReducer, authInitStaate)
+  const [authState, dispatch] = useReducer(authReducer, authInitState)
   const loginHandler=(payload)=>{
     dispatch({type:AUTH_TYPES.LOGIN,payload})
   }
