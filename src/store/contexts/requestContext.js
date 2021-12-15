@@ -6,7 +6,7 @@ import {requestInitState, requestReducer } from '../reducers/requestReducers'
 const requestContext=createContext(requestInitState)
 
 function RequestProvider({children}){
-  const [requestState, dispatch] = useReducer(requestReducer, requestContext)
+  const [requestState, dispatch] = useReducer(requestReducer, resquestInitState)
   const createHandler=(payload)=>{
     dispatch({type:REQUEST_TYPES.CREATE,payload})
   }

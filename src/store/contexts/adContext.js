@@ -6,7 +6,7 @@ import {adInitState, adReducer } from '../reducers/adReducers'
 const adContext=createContext(adInitState)
 
 function AdProvider({children}){
-  const [adState, dispatch] = useReducer(adReducer, adContext)
+  const [adState, dispatch] = useReducer(adReducer, adInitState)
   const createHandler=(payload)=>{
     dispatch({type:AD_TYPES.CREATE,payload})
   }
