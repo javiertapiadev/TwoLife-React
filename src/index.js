@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
-import './styles/index.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './components/App';
+
 import {
   Home,
   RequestPage,
@@ -15,6 +15,7 @@ import {
 import {AuthProvider} from './store/contexts/authContext'
 import {AdProvider} from './store/contexts/adContext'
 import {RequestProvider} from './store/contexts/requestContext'
+import './styles/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
