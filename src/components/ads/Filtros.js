@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import {Container, Select } from "@mui/material";
+import { Component, useState } from 'react';
+import { Container } from "@mui/material";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
 
@@ -55,7 +54,7 @@ function valuetext(value) {
   }
   
     function RangeSlider() {
-    const [value, setValue] = React.useState([0,80]);
+    const [value, setValue] = useState([0,80]);
   
     const handleChange = (event, newValue) => {
       setValue(newValue);

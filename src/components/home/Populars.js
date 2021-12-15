@@ -22,13 +22,8 @@ function Populars(){
         setVideogames(jsonData);
     };
 
-    return (
-        <>
-            <NavBar/>
-                <Container>
-                    <h1>All Videogames</h1>
-                </Container>
-                <Container>
+  return (
+    <>
         <Typography
           color="textPrimary"
           gutterBottom
@@ -50,16 +45,14 @@ function Populars(){
                   </Typography>
                 </CardContent>
                 <CardMedia>
-                    <img src={img} alt=""/>
-                </CardMedia>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-            <Footer/>
-        </>
-    )
+                  <img src={img} alt=""/>
+              </CardMedia>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </>
+  )
 }
 
 export default Populars;

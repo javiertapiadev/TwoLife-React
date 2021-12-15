@@ -34,7 +34,7 @@ class RequestPage extends React.Component {
   render() {
     return (
       <>
-        <NavBar />
+        {/* <NavBar /> */}
 
         <Container fluid>
           <Row className='requests-header'>

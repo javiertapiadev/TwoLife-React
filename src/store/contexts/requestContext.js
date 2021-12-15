@@ -1,6 +1,6 @@
 import {createContext,useReducer} from 'react'
-import { REQUEST_TYPES } from '../actions/authActions'
-import {requestInitState, requestReducer } from '../reducers/authReducers'
+import { REQUEST_TYPES } from '../actions/requestActions'
+import {requestInitState, requestReducer } from '../reducers/requestReducers'
 
 
 const requestContext=createContext(requestInitState)

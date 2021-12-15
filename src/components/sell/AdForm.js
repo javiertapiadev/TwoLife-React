@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Grid from '@mui/material/Grid';
 
 import SingleImage from '../layout/SingleImage';
-import MultipleImages from './MultipleImages';
+import MultipleImages from '../layout/MultipleImages';
 import AdFormInputs from './AdFormInputs';
 import SubmitButton from '../common/SubmitButton';
 

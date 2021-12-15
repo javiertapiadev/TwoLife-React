@@ -1,10 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Button, Card, CardActionArea, CardMedia, 
-  CardContent, Typography, CardActions, Grid } 
+import { Button, Card, CardMedia, CardContent, Typography, 
+  CardActions, Chip } 
 from '@mui/material/';
+import Carousel from "react-elastic-carousel";
 import '../../styles/videogames.css';
+import styled from "styled-components";
 
-const games = "https://twolifes.herokuapp.com/v1/videogames";
+const MainContainer = styled.div`
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  max-width: 100%;
+  background-color: "blue";
+`;
+
+const Carouselwrapper = styled.div`
+  width: 100%;
+`;
+
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+  { width: 768, itemsToShow: 3 }, 
+  { width: 1200, itemsToShow: 4 }
+];
+
+const games = "https://twolifes.herokuapp.com/v1/videogames?limit=4";
+
+const imgUrl = "https://m.media-amazon.com/images/I/71vF5KVcvqS._AC_SY500_.jpg"
 
 function Latests(){
 
@@ -21,38 +47,42 @@ function Latests(){
   };
 
   return (
-
-      <Container>
-        <Typography
-          color="textPrimary"
-          gutterBottom
-          variant="h2"
-          align="center"
-        >
-          Nuevos Lanzamientos
+      <MainContainer>
+        <Typography gutterBottom variant="h3" component="div">
+          Los videojuegos mas nuevos
         </Typography>
-        <Grid container spacing={3}>
-          {videogames.map(( imgUrl, title, estado, detalles ) => (
-            <Grid item xs={12} sm={4} key={imgUrl}>
-              <Card className={title}>
+        <Carouselwrapper>
+          <Carousel breakPoints={breakPoints}>
+            { videogames.map (( videogame ) => (
+              <Card key={videogame._id} sx={{ }} style={{  }}>
+                <Chip color="primary" label="Nuevo"/>
                 <CardMedia
-                  className={estado}
-                  image={detalles}
+                  component="img"
+                  alt="green iguana"
+                  height="200"
+                  width="300" 
+                  image={imgUrl}
                 />
                 <CardContent>
-                  <Typography color="primary" variant="h5">
-                    {title}
+                  <Typography gutterBottom variant="h6" component="div">
+                    {videogame.name}
                   </Typography>
-                  <Typography color="textSecondary" variant="subtitle2">
-                    {detalles}
+                  <Typography variant="body2" color="text.secondary">
+                    $200
                   </Typography>
-                </CardContent>
+                  <Typography variant="body2" color="text.secondary">
+                    {videogame.synopsis}
+                  </Typography>
+                  </CardContent>
+                    <CardActions>
+                      <Button variant="contained" color="success" size="large">Ver videojuego</Button>
+                    </CardActions>
               </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    )
-};
+            ))}
+          </Carousel>
+        </Carouselwrapper>
+      </MainContainer>
+  );
+}
 
 export default Latests;
