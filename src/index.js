@@ -10,6 +10,7 @@ import {
   Sell,
   SignUp,
   IndividualAd,
+  Account,
   Login
 } from './views';
 import {AuthProvider} from './store/contexts/authContext'
@@ -28,6 +29,7 @@ ReactDOM.render(
         <Routes>
           <Route  path="/" element={<App/>} >
             <Route  path="/" element={<Home/>} />
+            <Route  path="/account" element={<Account/>} />
             <Route  path="/sell" element={<Sell/>} />
             <Route  path="/ads" element={<Ads/>} />
             <Route  path="/ads/:id" element={<IndividualAd/>} />
