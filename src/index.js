@@ -15,7 +15,7 @@ import {
 } from './views';
 import {AuthProvider} from './store/contexts/authContext'
 import {AdProvider} from './store/contexts/adContext'
-import {myAdProvider} from './store/contexts/myAdContext'
+import {MyAdProvider} from './store/contexts/myAdContext'
 import {RequestProvider} from './store/contexts/requestContext'
 import './styles/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
