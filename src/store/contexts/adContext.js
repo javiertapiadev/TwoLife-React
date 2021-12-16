@@ -2,7 +2,6 @@ import {createContext,useReducer} from 'react'
 import { AD_TYPES } from '../actions/adActions'
 import {adInitState, adReducer } from '../reducers/adReducers'
 
-
 const adContext=createContext(adInitState)
 
 function AdProvider({children}){
