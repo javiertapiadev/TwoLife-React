@@ -1,7 +1,5 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-
-import NavBar from '../components/layout/NavBar'
 import RequestFilter from "../components/RequestFilter";
 import RequestList from "../components/RequestList";
 

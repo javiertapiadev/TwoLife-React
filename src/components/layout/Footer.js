@@ -15,7 +15,7 @@ function Footer() {
 
   return (
     <>
-      <AppBar position="static" style= {{ backgroundColor: "white" }}>
+      <AppBar position="static" style= {{ backgroundColor: "white", padding:"3%" }}>
         <Grid container>
           <Grid container xs={4}>
             <Stack style={{ width: "100%" }}>
@@ -24,7 +24,7 @@ function Footer() {
               <Linkers href="#" underline="hover"> Trabaja para nosotros </Linkers>
             </Stack>
           </Grid>
-          <Grid container xs={4} style={{ width: "100%" }}>
+          <Grid container xs={4} style={{ width: "100%"}}>
             <Stack style={{ width: "100%" }}>
               <Paragraph>Ayuda</Paragraph>
               <Linkers href="#" underline="hover">Comprar</Linkers>
