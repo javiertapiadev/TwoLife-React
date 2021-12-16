@@ -15,7 +15,7 @@ function Account() {
   const [profilePic, setProfilePic] = useState("")
   useEffect(()=>{
     const userInfo = async () => {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}users`,
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/users`,
         {
           method: 'GET',
           headers: {
