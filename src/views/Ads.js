@@ -33,7 +33,7 @@ class Ads extends Component {
 
   componentDidMount() {
       axios.get(`${process.env.REACT_APP_API_URL}/ads?populate=[videogame]`)
-          .then(response => this.setState({ ads: response.data }))
+          .then(response => {this.setState({ ads: response.data }); console.log(response.data)})
           .catch(e => console.log(e))
   }
 
@@ -112,7 +112,7 @@ class Ads extends Component {
         </Grid>
         <Grid item xs={9}>
           <main>
-            <AdsList ads={this.state.adsCopy} />
+            <AdsList ads={this.state.ads} />
           </main>
         </Grid>
       </Grid>
