@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext, useNavigate } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -18,6 +18,8 @@ import {
   MenuItem,
   Button,
 } from '@mui/material/';
+
+import { authContext } from '../../store/contexts/authContext';
 
 import logo from '../../assets/Captura.png';
 
@@ -48,7 +50,7 @@ const styles = {
   }
 }
 
-const LoggedOutOpts = () => {
+const LoggedOutOpts = ({ auth}) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const mobileMoreAnchorElRef = useRef(mobileMoreAnchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -58,6 +60,7 @@ const LoggedOutOpts = () => {
   const handleMobileMenuOpen = (event) => {
     mobileMoreAnchorElRef.current = event.currentTarget
     setMobileMoreAnchorEl(event.currentTarget);
+    console.log(auth)
   };
 
   const handleMobileMenuClose = () => {
@@ -110,10 +113,11 @@ const LoggedOutOpts = () => {
   )
 }
 
-const LoggedInOpts = () => {
+const LoggedInOpts = ({ auth}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const anchorElRef = useRef(anchorEl)
   const open = Boolean(anchorEl);
+  // const navigate = useNavigate()
   
   const user = {
     username: "fulan0",
@@ -123,6 +127,7 @@ const LoggedInOpts = () => {
   const handleClick = (event) => {
     anchorElRef.current = event.currentTarget
     setAnchorEl(event.currentTarget);
+    console.log(auth)
   }
 
   const handleClose = () => {
@@ -133,7 +138,13 @@ const LoggedInOpts = () => {
   const handleScroll = () => {
     if (anchorElRef.current) {
       handleClose()
+      auth.onLogOut()
     }
+  }
+
+  const handleLogOut = () => {
+    handleClose()
+    // navigate("/", { replace: true });
   }
 
   useEffect(() => {
@@ -158,7 +169,7 @@ const LoggedInOpts = () => {
             <Avatar src={user.profile_pic} sx={{width: "30px", height: "30px"}}/> : 
             <AccountCircle />} 
           <Typography sx={{ display: {xs: "none", md: "inherit"}, marginLeft: 1 }}>
-            {user.username}
+          {auth.username}
           </Typography>
           <KeyboardArrowDownIcon sx={{ display: {xs: "none", md: "inherit"} }}/>
       </Button>
@@ -184,6 +195,9 @@ const LoggedInOpts = () => {
         <MenuItem onClick={handleClose} sx={{ display: {md: "none"} }}>
           <Link to="/news" style={styles.links}>Notificaciones</Link>
         </MenuItem>
+        <MenuItem onClick={handleLogOut}>
+          <p style={styles.links}>Log Out</p>
+        </MenuItem>
       </Menu>
     </div>
   )
@@ -193,7 +207,9 @@ function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const anchorElRef = useRef(anchorEl)
 
-  const isLogged = false
+  const auth = useContext(authContext)
+
+  const isLogged = auth.state.isLoggedIn
 
   const handleOpenNavMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -268,7 +284,7 @@ function NavBar() {
           </Link>
         </Box>
 
-        {isLogged ? <LoggedInOpts /> : <LoggedOutOpts />}
+        {isLogged ? <LoggedInOpts auth={auth} /> : <LoggedOutOpts auth={auth}/>}
       </Toolbar>
     </AppBar>
   )

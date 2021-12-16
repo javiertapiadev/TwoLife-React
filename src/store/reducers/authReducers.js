@@ -5,9 +5,8 @@ const authInitState={
   username:'',
   email:'',
   token:'',
-  isLoggedIn:false,
-  onLogin:()=>{},
-  onLogout:()=>{}
+  profilePic:'',
+  isLoggedIn:false
 }
 
 const STORAGE={
@@ -17,15 +16,14 @@ const STORAGE={
 function authReducer(state,action){
   switch(action.type){
     case AUTH_TYPES.LOGIN:
-      localStorage.setItem(STORAGE.KEY,action.payload.token) 
-      return {...state,...action.payload}
+      // localStorage.setItem(STORAGE.KEY,action.payload.token)
+      return { ...state, ...action.payload, isLoggedIn: true}
     case AUTH_TYPES.LOGOUT:
-      localStorage.removeItem(STORAGE.KEY)
-      return{...state,authInitState}
+      // localStorage.removeItem(STORAGE.KEY)
+      return authInitState
     default:
       return state
   }
-
 }
 
 export {authReducer,authInitState}

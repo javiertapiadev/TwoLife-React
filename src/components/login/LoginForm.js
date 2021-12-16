@@ -20,9 +20,10 @@ function LoginForm() {
     formState: { errors },
   } = useForm()
 
-  const authState = useContext(authContext)
+  const auth = useContext(authContext)
 
   const onSubmit = async (data) => {
+
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/login`,
         {
@@ -36,20 +37,19 @@ function LoginForm() {
       )
 
       const userData = await response.json()
-
       console.log('register ', userData)
 
       if (userData){
-        authState.onLogin(userData)
+        auth.onLogin(userData)
         navigate(from, { replace: true });
-        console.log('authcontext ',authState.username)
+        console.log('authcontext ',auth) // Esta impresión no muestra el contexto en tiempo real
       }
     } catch (error) {
       console.log(error)
     }
 
   }
-  
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className='card-form' /* sx={{ display: 'flex',flexDirection:'column' , padding:'10px', width:'90vw', height:'70vh',justifyContent:'center'}} */>
