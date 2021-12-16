@@ -16,10 +16,10 @@ const STORAGE={
 function authReducer(state,action){
   switch(action.type){
     case AUTH_TYPES.LOGIN:
-      // localStorage.setItem(STORAGE.KEY,action.payload.token)
+      localStorage.setItem(STORAGE.KEY,action.payload.token)
       return { ...state, ...action.payload, isLoggedIn: true}
     case AUTH_TYPES.LOGOUT:
-      // localStorage.removeItem(STORAGE.KEY)
+      localStorage.removeItem(STORAGE.KEY)
       return authInitState
     default:
       return state

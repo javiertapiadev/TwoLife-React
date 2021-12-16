@@ -138,12 +138,12 @@ const LoggedInOpts = ({ auth}) => {
   const handleScroll = () => {
     if (anchorElRef.current) {
       handleClose()
-      auth.onLogOut()
     }
   }
 
   const handleLogOut = () => {
     handleClose()
+    auth.onLogout()
     // navigate("/", { replace: true });
   }
 
