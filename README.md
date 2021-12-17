@@ -124,6 +124,20 @@
 
 <h2> Nuestro proyecto </h2>
 <br>
+    
+ <table style="width:100%">
+  <tr>
+    <td>
+        <img src="/public/proyecto/1.jpeg" style="width:500px; height:400px;">
+    </td>
+    <td>
+        <img src="/public/proyecto/2.jpeg" style="width:500px; height:400px;">
+    </td>
+    <td>
+       <img src="/public/proyecto/3.jpeg" style="width:500px; height:400px;">
+    </td>
+  </tr>
+</table>
 
 <h2> Demo de nuestro proyecto </h2>
 
