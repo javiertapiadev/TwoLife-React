@@ -48,9 +48,6 @@
     <td>
         <a href="https://github.com/rcarreno90" target="_blank">Rcarreno90</a>
     </td>
-    <td>
-        <a href="https://github.com/TapiaXavier" target="_blank">TapiaXavier</a>
-    </td>
   </tr>  
 </table>
 <br>
