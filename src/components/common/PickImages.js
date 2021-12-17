@@ -1,19 +1,16 @@
 import { useState } from 'react';
 
-import ImageList from '@mui/material/ImageList';
+import LimitWarning from './LimitWarning';
+import MultipleImages from './MultipleImages';
 
-import ImageItem from '../sell/ImageItem';
-import LimitWarning from '../sell/LimitWarning';
-
-export default function MultipleImages({optionalImgs, setOptionalImgs, isDisabled}) {
+export default function PickImages({ images, setOptionalImgs, isDisabled}) {
     const [isOverLimit, setIsOverLimit] = useState(false);
-    const imageItems = []
 
     const handleMultipleFiles = (e) => {
         const fileList = e.target.files
         const files = [...fileList]
 
-        if (files.length + optionalImgs.length <= 4) {
+        if (files.length + images.length <= 4) {
             setIsOverLimit(false)
 
             files.forEach(file => {
@@ -32,31 +29,15 @@ export default function MultipleImages({optionalImgs, setOptionalImgs, isDisable
 
     const handleDeleteImg = (e) => {
         let index = e.currentTarget.id
-        const aux = [...optionalImgs]
+        const aux = [...images]
 
         aux.splice(index, 1)
         setOptionalImgs(aux)
     }
 
-    for(let i = 0; i < 4; i++) {
-        imageItems.push(
-            <ImageItem 
-            optionalImgs={optionalImgs}
-            index={i}
-            handleDeleteImg={handleDeleteImg} />
-        )
-    }
-
     return (
         <div style={{ marginBottom: "15px", textAlign: "center" }}>
-            <ImageList 
-                sx={{ width: 250, height: 250, marginLeft: "auto", marginRight: "auto" }}
-                cols={2}
-                rowHeight={125}>
-                    {
-                        imageItems.map((imageItem) => imageItem)
-                    }
-            </ImageList>
+            <MultipleImages images={images} isForm={{ handleDeleteImg }} isSquare/>
 
             <input
                 type="file"

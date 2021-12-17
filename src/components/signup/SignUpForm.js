@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 import TextField from '@mui/material/TextField';
 
-import SingleImage from '../layout/SingleImage'
+import SingleImage from '../common/SingleImage'
 import SubmitButton from '../common/SubmitButton';
 import ValidationError from '../common/ValidationError';
 

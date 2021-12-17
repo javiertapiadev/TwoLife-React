@@ -1,4 +1,4 @@
-import ValidationError from '../common/ValidationError';
+import { ValidationError } from '../common';
 
 export default function PlatformInput({isDisabled, register, errors, platformList}) {
     return (
