@@ -1,4 +1,4 @@
-import ValidationError from '../common/ValidationError';
+import { ValidationError } from '../common';
 
 export default function ConditionInput({isDisabled, register, errors}) {
     return (

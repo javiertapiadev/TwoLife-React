@@ -1,5 +1,5 @@
 import TextField from '@mui/material/TextField';
-import ValidationError from '../common/ValidationError';
+import { ValidationError } from '../common';
 
 export default function PriceInput({isDisabled, register, errors}) {
     return (

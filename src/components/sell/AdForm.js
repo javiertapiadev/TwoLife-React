@@ -3,10 +3,8 @@ import { useForm } from "react-hook-form";
 
 import Grid from '@mui/material/Grid';
 
-import SingleImage from '../layout/SingleImage';
-import MultipleImages from '../layout/MultipleImages';
+import { SingleImage, PickImages, SubmitButton } from '../common';
 import AdFormInputs from './AdFormInputs';
-import SubmitButton from '../common/SubmitButton';
 
 import { uploadImg, createVideogame, postResource } from '../helpers';
 
@@ -73,17 +71,20 @@ export default function AdForm({setIsSubmitting, setIsOpen, setIsPosted}) {
                     direction={{ xs: "column", sm: "row", md: "column" }}
                     className="imgs-data">
                         <SingleImage
-                            isDisabled={isDisabled}
-                            register={register}
-                            field="mainImg"
-                            errors={errors}
                             image={mainImgFile}
-                            setImg={setMainImgFile}
-                            styles={{borderRadius: "15px"}}/>
-                        <MultipleImages
-                            optionalImgs={optionalImgs}
+                            styles={{borderRadius: "15px"}}
+                            form={{
+                                isDisabled,
+                                register,
+                                field: "mainImg",
+                                errors,
+                                setImg: setMainImgFile
+                            }}
+                        />
+                        <PickImages
+                            images={optionalImgs}
                             setOptionalImgs={setOptionalImgs}
-                            isDisabled={isDisabled}/>
+                            isDisabled={isDisabled} />
                 </Grid>
 
                 {/* Inputs que no son imágenes */}
