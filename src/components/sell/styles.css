@@ -1,0 +1,118 @@
+.ad-form {
+    width: 70%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ad-form .grid-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+}
+
+.ad-form .imgs-data {
+    grid-column: 1 / 6;
+    grid-row: 2 / 3;
+}
+
+.ad-form .imgs-data > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ad-form .img-picker-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad-form .img-picker {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.ad-form .img-picker-label {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #0f2026;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.ad-form .img-picker + .img-picker-label {
+    cursor: pointer;
+}
+
+.ad-form .text-data {
+    grid-column: 1 / 6;
+    grid-row: 1;
+    padding-top: 25px;
+    max-width: 100%;
+}
+
+.ad-form .description-section {
+    display: block;
+    box-sizing: border-box;
+    max-width: 90%;
+    outline: none;
+    resize: none;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ad-form .button-cont {
+    grid-column: 1 / 6;
+    grid-row: 3 / 4;
+    min-height: 80px;
+    text-align: center;
+}
+
+.ad-form .submit-button {
+    width: 150px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: #5271ff;
+}
+
+@media(min-width: 825px) {
+    .ad-form {
+        margin-top: 20px;
+    }
+    
+    .ad-form .grid-container {
+        gap: 30px;
+    }
+
+    .ad-form .imgs-data {
+        grid-column: 1 / 2;
+        grid-row: 1 / 5;
+    }
+
+    .ad-form .text-data {
+        grid-column: 2 / 6;
+        grid-row: 1 / 4;
+    }
+
+    .ad-form .button-cont {
+        grid-column: 2 / 6;
+        grid-row: 4 / 5;
+    }
+}
