@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useContext, useNavigate } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -18,6 +18,8 @@ import {
   MenuItem,
   Button,
 } from '@mui/material/';
+
+import { authContext } from '../../store/contexts/authContext';
 
 import logo from '../../assets/Captura.png';
 
@@ -48,19 +50,33 @@ const styles = {
   }
 }
 
-const LoggedOutOpts = () => {
+const LoggedOutOpts = ({ auth}) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const mobileMoreAnchorElRef = useRef(mobileMoreAnchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
 
   const handleMobileMenuOpen = (event) => {
+    mobileMoreAnchorElRef.current = event.currentTarget
     setMobileMoreAnchorEl(event.currentTarget);
+    console.log(auth)
   };
 
   const handleMobileMenuClose = () => {
+    mobileMoreAnchorElRef.current = null
     setMobileMoreAnchorEl(null);
   };
+
+  const handleScroll = () => {
+    if (mobileMoreAnchorElRef.current) {
+      handleMobileMenuClose()
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, [])
 
   return (
     <>
@@ -97,9 +113,11 @@ const LoggedOutOpts = () => {
   )
 }
 
-const LoggedInOpts = () => {
+const LoggedInOpts = ({ auth}) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const anchorElRef = useRef(anchorEl)
   const open = Boolean(anchorEl);
+  // const navigate = useNavigate()
   
   const user = {
     username: "fulan0",
@@ -107,12 +125,31 @@ const LoggedInOpts = () => {
   }
 
   const handleClick = (event) => {
+    anchorElRef.current = event.currentTarget
     setAnchorEl(event.currentTarget);
+    console.log(auth)
   }
 
   const handleClose = () => {
+    anchorElRef.current = null
     setAnchorEl(null);
   }
+
+  const handleScroll = () => {
+    if (anchorElRef.current) {
+      handleClose()
+    }
+  }
+
+  const handleLogOut = () => {
+    handleClose()
+    auth.onLogout()
+    // navigate("/", { replace: true });
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, [])
 
   return (
     <div>
@@ -132,7 +169,7 @@ const LoggedInOpts = () => {
             <Avatar src={user.profile_pic} sx={{width: "30px", height: "30px"}}/> : 
             <AccountCircle />} 
           <Typography sx={{ display: {xs: "none", md: "inherit"}, marginLeft: 1 }}>
-            {user.username}
+          {auth.username}
           </Typography>
           <KeyboardArrowDownIcon sx={{ display: {xs: "none", md: "inherit"} }}/>
       </Button>
@@ -147,7 +184,7 @@ const LoggedInOpts = () => {
         }}
         disableScrollLock={ true }>
         <MenuItem onClick={handleClose}>
-          <Link to="/me" style={styles.links}>Mi cuenta</Link>
+          <Link to="/account" style={styles.links}>Mi cuenta</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <Link to="/myrequests" style={styles.links}>Mis solicitudes</Link>
@@ -158,6 +195,9 @@ const LoggedInOpts = () => {
         <MenuItem onClick={handleClose} sx={{ display: {md: "none"} }}>
           <Link to="/news" style={styles.links}>Notificaciones</Link>
         </MenuItem>
+        <MenuItem onClick={handleLogOut}>
+          <p style={styles.links}>Log Out</p>
+        </MenuItem>
       </Menu>
     </div>
   )
@@ -165,16 +205,32 @@ const LoggedInOpts = () => {
 
 function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const isLogged = true
+  const anchorElRef = useRef(anchorEl)
+
+  const auth = useContext(authContext)
+
+  const isLogged = auth.state.isLoggedIn
 
   const handleOpenNavMenu = (event) => {
     setAnchorEl(event.currentTarget);
+    anchorElRef.current = event.currentTarget
   };
 
   const handleCloseNavMenu = () => {
     setAnchorEl(null);
+    anchorElRef.current = null
   };
+
+  const handleScroll = () => {
+    if (anchorElRef.current) {
+      handleCloseNavMenu()
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, [])
+
   return (
     <AppBar sx={{ backgroundColor: "white", position: "relative", display: "flex", justifyContent: "space-between" }}>
       <Toolbar variant="dense" sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -194,7 +250,7 @@ function NavBar() {
         {/* Pantallas chicas */}
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton
-            aria-label="account of current user"
+            aria-label="Menu"
             aria-controls="menu-appbar"
             aria-haspopup="true"
             onClick={handleOpenNavMenu}
@@ -228,7 +284,7 @@ function NavBar() {
           </Link>
         </Box>
 
-        {isLogged ? <LoggedInOpts /> : <LoggedOutOpts />}
+        {isLogged ? <LoggedInOpts auth={auth} /> : <LoggedOutOpts auth={auth}/>}
       </Toolbar>
     </AppBar>
   )

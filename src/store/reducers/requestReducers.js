@@ -1,4 +1,4 @@
-import { REQUEST_TYPES } from "../actions/adActions"
+import { REQUEST_TYPES } from "../actions/requestActions"
 
 const requestInitState={
   requests:[]

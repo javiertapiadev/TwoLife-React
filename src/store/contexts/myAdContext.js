@@ -5,7 +5,7 @@ import {adInitState, adReducer } from '../reducers/adReducers'
 
 const adContext=createContext(adInitState)
 
-function AdProvider({children}){
+function MyAdProvider({children}){
   const [adState, dispatch] = useReducer(adReducer, adContext)
   const createHandler=(payload)=>{
     dispatch({type:AD_TYPES.CREATE,payload})
@@ -13,7 +13,7 @@ function AdProvider({children}){
   const updateHandler=(payload)=>{
     dispatch({type:AD_TYPES.DELETE,payload})
   }
-  const deleteHandler=(payload)=>{
+  const deleteHandler = (payload)=>{
     dispatch({type:AD_TYPES.UPDATE,payload})
   }
   const ad={
@@ -30,4 +30,4 @@ function AdProvider({children}){
   )
 }
 
-export {adContext,AdProvider}
+export {adContext,MyAdProvider}
