@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+
+env.sh
+.vscode
+reportWebVitals.js
+package-lock.json

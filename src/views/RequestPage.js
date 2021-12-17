@@ -1,7 +1,5 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-
-import { NavBar } from '../components/NavBar'
 import RequestFilter from "../components/RequestFilter";
 import RequestList from "../components/RequestList";
 
@@ -34,7 +32,7 @@ class RequestPage extends React.Component {
   render() {
     return (
       <>
-        <NavBar />
+        {/* <NavBar /> */}
 
         <Container fluid>
           <Row className='requests-header'>

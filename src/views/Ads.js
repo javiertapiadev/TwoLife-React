@@ -1,73 +1,129 @@
-import React from 'react';
 import { Component } from 'react';
-import AdCard from '../components/AdCard';
-import { NavBar } from '../components/NavBar'
+import axios from 'axios';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row'
+import { Container } from "@mui/material";
+import Button from '@mui/material/Button';
+import { Grid } from "@mui/material";
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import SearchIcon from '@mui/icons-material/Search';
+import {
+  InputBase,
+  Stack
+} from '@mui/material/';
+
+import Ordenar from "../components/ads/Ordenar";
+import AdsList from "../components/ads/AdsList";
+import {RowRadioButtonsGroup, RangeSlider, FiltroGeneros, FiltroPlataformas} from "../components/ads/Filtros";
+
+const Item = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(1),
+  textAlign: 'center',
+}));
+
+const Searcher = styled(Stack)`
+  display: flex;
+`;
 
 class Ads extends Component {
-    state = {
-        data: [
-            {
-                "id": 1,
-                "name": "Mario Kart 8 Deluxe",
-                "img": "https://m.media-amazon.com/images/I/71vF5KVcvqS._AC_SY500_.jpg",
-                "price": "677",
-                "platform": "Nintendo Switch"
-            },
-            {
-                "id": 2,
-                "name": "Lego: Star Wars",
-                "img": "https://m.media-amazon.com/images/I/81EKEhkntuL._SL1500_.jpg",
-                "price": "3474",
-                "platform": "Xbox 360"
-            },
-            {
-                "id": 3,
-                "name": "WWE: SmackDown VS RAW 2011",
-                "img": "https://m.media-amazon.com/images/I/91c30PneriL._AC_SX425_.jpg",
-                "price": "607",
-                "platform": "PS3"
-            },
-            {
-                "id": 4,
-                "name": "Lego: Indiana Jones",
-                "img": "https://m.media-amazon.com/images/I/61Iu1g6bb8L._SY445_.jpg",
-                "price": "374",
-                "platform": "PS2"
-            },
-            {
-                "id": 5,
-                "name": "Red Dead Redemption 2",
-                "img": "https://m.media-amazon.com/images/I/71RuJ6zBT1S._AC_SL1500_.jpg",
-                "price": "1407",
-                "platform": "Xbox One"
-            },
-            {
-                "id": 6,
-                "name": "Spider-Man: Miles Morales",
-                "img": "https://m.media-amazon.com/images/I/71dtn2ZMs7L._SL1361_.jpg",
-                "price": "1074",
-                "platform": "PS4"
-            }
-        ]
-    }
+  constructor(props) {
+      super(props)
+      this.state = {
+        userId: "a",
+        ads: [],
+        adsCopy: [],
+        publishDate: "",
+        condition: "",
+        videogame: "",
+        advertiser: "",
+        platform: [],
+        from: "",
+        to: "",
+        status: "",
+        sortBy: "publishDate",
+        order: "desc",
+        filter: ""
+      }
+  }
 
-    render() {
-        return (
-            <>
-                <NavBar />
-                <Container className="mb-5" /*"bg-primary"*/ style={{ width: '90%' }}>
-                    <Row xs="auto" md="auto" lg="auto" className="g-5">
-                        {this.state.data.map(data => (
-                            <AdCard gameData={data} key={data.id} />
-                        ))}
-                    </Row>
-                </Container>
-            </>
-        );
-    }
+  componentDidMount() {
+    axios.get(`${process.env.REACT_APP_API_URL}/ads?populate=[videogame]&sort=[${this.state.sortBy},${this.state.order}]`)
+          .then(response => this.setState({ ads: response.data }))
+          .catch(e => console.log(e))
+  }
+
+  makeFilter = () => {
+    console.log(this.state)
+    // this.setState({[filter]: value})
+    // this.setState({ filter: `publishDate=${publishDate}&condition=${condition}&videogame=${videogame}&advertiser=${advertiser}&platform=${platform}&price=[${from},${to}]&status=${status}&sort=[${sortBy},${order}]&limit=10`})
+  }
+
+  handlerGenero = (e) => {
+    console.log(e.target.value)
+    // this.setState({})
+    // let adsCopy;
+    //   adsCopy=this.state.ads.filter(item=>item.genre===e.target.value)
+    // this.setState({
+    //   adsCopy:adsCopy
+    // })
+  }
+
+  handlerGameStatus = (e) => {
+    this.setState({ status: e.target.value })
+  }
+
+  handlerPlatform = (e) => {
+    this.setState({ platform: [...this.state.platform, e.target.value]})
+  }
+
+  render (){
+  return (
+    <>
+      <Grid container spacing={2} sx={{ maxWidth: "90%", marginLeft: "auto", marginRight: "auto"}} justifyContent="center">
+        <Grid item xs={9} md={3}>
+          <Ordenar />
+        </Grid>
+
+        <Grid item xs={9} md={9} sx={{display: {md: "flex"}, alignItems: "center", maxHeight: "80px", marginLeft: "auto", marginRight: "auto"}}>
+          <Searcher direction="row" sx={{ display:  'flex', maxHeight: "50px"  }}>
+            <SearchIcon classes={{ root: { color: "#122325" } }} />
+            <InputBase
+              placeholder="Mario Bros…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Searcher>
+
+          <Button onclick={this.makeFilter} variant="primary">Buscar</Button>
+        </Grid>
+
+        <Grid item xs={3} alignItems="center" sx={{display: {xs: "none", md: "block"}}}>
+          <Container >
+            <h3>Condición</h3>
+            <RowRadioButtonsGroup handlerGameState={this.handlerGameStatus}/>
+            {/* <br></br>
+            <br></br> */}
+            <h3>Rango de precio</h3>
+            <RangeSlider/>
+            {/* <br></br> */}
+            <h3>Género</h3>
+            <FiltroGeneros handlerGenero={this.handlerGenero}/>
+            {/* <br></br> */}
+            <h3>Plataformas</h3>
+            <FiltroPlataformas handlerPlatform={this.handlerPlatform}/>
+          </Container>
+          {/* <Button sx={{ display: { md: "none" } }}>
+            Filtros
+          </Button> */}
+          
+        </Grid>
+        <Grid item xs={9}>
+          <main>
+            <AdsList ads={this.state.ads} />
+          </main>
+        </Grid>
+      </Grid>
+    </>
+  );
+  }
 }
-
 export default Ads;

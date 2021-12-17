@@ -1,0 +1,20 @@
+
+.form{
+  display: flex;
+  flex-direction:column;
+  background-color:black;
+}
+
+.card-form{
+  display:flex;
+  background-color: rgba(0, 0, 0, .4);
+  flex-direction: column;
+  height:100%;
+  width:100%
+}
+
+
+.text-input .input-text-color {
+  color:white
+
+}

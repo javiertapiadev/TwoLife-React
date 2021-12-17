@@ -1,52 +1,58 @@
-import React from 'react';
-import { Carousel, Badge, Container } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Grid, Stack, AppBar, Link, Typography, 
+    Card, CardMedia, CardContent } from '@mui/material/';
+import styled from 'styled-components';
+import NavBar from '../layout/NavBar'
+import Footer from '../layout/Footer'
 
+const img = "https://m.media-amazon.com/images/I/71vF5KVcvqS._AC_SY500_.jpg";
+const games = "https://twolifes.herokuapp.com/v1/videogames";
 
 function Populars(){
-    return (
-        <>
-        <Container fluid style={{ display: "flex", justifyContent:"center", alignItems:"center" }}>
-        <h2>
-            <Badge bg="secondary">Populares</Badge>
-        </h2>
-        </Container>
-        <Carousel>
-            <Carousel.Item interval={1000}>
-                <img
-                    className="d-block w-100"
-                    src="https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                    alt="First slide"
-                />
-            <Carousel.Caption>
-                <h3>Street Fighter</h3>
-                <p>El mejor juego de peleas</p>
-            </Carousel.Caption>
-            </Carousel.Item>
-        <Carousel.Item interval={500}>
-                <img
-                className="d-block w-100"
-                src="https://images.unsplash.com/photo-1566577134669-e1e944d0ae11?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80"
-                alt="Second slide"
-                />
-            <Carousel.Caption>
-                <h3>Metroid</h3>
-                <p>Un guerrero espacial.</p>
-            </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-            <img
-                className="d-block w-100"
-                src="https://images.unsplash.com/photo-1566577134624-6f6cc4bb272b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80"
-                alt="Third slide"
-        />
-        <Carousel.Caption>
-            <h3>The Legend of Zelda</h3>
-            <p>Salva a la princesa zelda con la ayuda de link</p>
-        </Carousel.Caption>
-        </Carousel.Item>
-    </Carousel>
+
+    const [videogames, setVideogames] = useState([]);
+
+    useEffect( () => {
+        getVideogames();
+    }, [] );
+
+    const getVideogames = async () => {
+        const response = await fetch(games);
+        const jsonData = await response.json();
+        setVideogames(jsonData);
+    };
+
+  return (
+    <>
+        <Typography
+          color="textPrimary"
+          gutterBottom
+          variant="h2"
+          align="center"
+        >
+          Nuestros Videojuegos
+        </Typography>
+        <Grid container spacing={3}>
+          {videogames.map( videogame  => (
+            <Grid item xs={12} sm={4} key={videogame._id}>
+              <Card>
+                <CardContent>
+                  <Typography color="primary" variant="h5">
+                    <span>{videogame.name}</span>
+                  </Typography>
+                  <Typography color="textSecondary" variant="subtitle2">
+                    {videogame.synopsis}
+                  </Typography>
+                </CardContent>
+                <CardMedia>
+                  <img src={img} alt=""/>
+              </CardMedia>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </>
-    )
+  )
 }
 
 export default Populars;
