@@ -30,10 +30,10 @@
         <img src="/public/devs/emmanuel.jpg" alt="emmanuel" style="widht: 200px; height:200px; border-radius: 50%; border: 5px solid #666;">
     </td>
     <td>
-        <img src="/public/devs/emmanuel.jpg" alt="emmanuel" style="widht: 200px; height:200px; border-radius: 50%; border: 5px solid #666;">
+        <img src="/public/devs/Ivan.jpeg" alt="Ivan" style="widht: 200px; height:200px; border-radius: 50%; border: 5px solid #666;">
     </td>
     <td>
-        <img src="/public/devs/emmanuel.jpg" alt="emmanuel" style="widht: 200px; height:200px; border-radius: 50%; border: 5px solid #666;">
+        <img src="/public/devs/Ramon.jpeg" alt="Ivan" style="widht: 200px; height:200px; border-radius: 50%; border: 5px solid #666;">
     </td>
     <td>
         <img src="/public/devs/emmanuel.jpg" alt="emmanuel" style="widht: 200px; height:200px; border-radius: 50%; border: 5px solid #666;">
